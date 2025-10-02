@@ -10,17 +10,22 @@ const Header = () => {
     <div className="flex flex-col flex-1 w-full h-30 items-center justify-center bg-black">
       <div className="flex max-w-375 w-4/5 items-center font-bold gap-6 justify-between">
         <Link href={"/"}>
-          <Image src={Logo} alt={"logo"} height={25} className="select-none" />
+          <Image
+            src={Logo}
+            alt="/emarketLogo-l.svg"
+            height={25}
+            className="select-none"
+          />
         </Link>
         <div className="not-md:hidden">
           <SearchBar />
         </div>
-        <div className="flex text-white">
+        <div className="flex text-white font-semibold">
           <Link className="flex" href={""}>
             <User color="white" />
             Login
           </Link>
-          <div> / </div>
+          <div>/</div>
           <Link href={""}>register</Link>
         </div>
         <Link className="not-md:hidden" href={""}>

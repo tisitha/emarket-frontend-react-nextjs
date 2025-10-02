@@ -3,8 +3,6 @@
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
 type searchItemType = {
   id: number;
   name: string;
@@ -15,6 +13,8 @@ type searchItemType = {
 type categoryType = { name: string };
 
 const CommandSearchBar = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const [toggleSearchContent, setToggleSearchContent] = useState(false);
 
   const checkFocus = () => {
@@ -32,7 +32,7 @@ const CommandSearchBar = () => {
   const handleSearch = async (searchTerm: string) => {
     if (searchTerm.trim() != "") {
       const response = await fetch(
-        `${apiUrl}open/search/${searchTerm.trim()}/10`
+        `${apiUrl}/open/search/${searchTerm.trim()}/10`
       );
       if (response.ok) {
         const searchdata: searchItemType[] = await response.json();
@@ -46,7 +46,7 @@ const CommandSearchBar = () => {
   };
 
   return (
-    <div>
+    <div className="font-normal">
       <div className="flex flex-1 rounded-lg border shadow-md min-w-[250px] md:min-w-[450px] bg-white">
         <input
           className="w-full pl-4 focus:outline-none"
@@ -58,7 +58,7 @@ const CommandSearchBar = () => {
         <SearchIcon className="p-2 opacity-80 hover:cursor-pointer h-9 w-9 right-0" />
       </div>
       {toggleSearchContent && searchList.length > 0 && (
-        <div className="absolute rounded-lg border shadow-md min-w-[250px] md:min-w-[450px] bg-white">
+        <div className="absolute rounded-lg border shadow-md min-w-[250px] md:min-w-[450px] z-1 bg-white">
           {searchList.map((item, key) => (
             <div
               key={key}
