@@ -17,7 +17,7 @@ type cardDetailType = {
   };
 };
 
-const Card = ({ cardDetail }: Props) => {
+const ProductCard = ({ cardDetail }: Props) => {
   return (
     <Link
       href={""}
@@ -53,4 +53,4 @@ const Card = ({ cardDetail }: Props) => {
   );
 };
 
-export default Card;
+export default ProductCard;

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import ProductCard from "./ProductCard";
 
 type cardDetailType = {
   id: number;
@@ -26,7 +26,7 @@ const DealsTab = async () => {
       </div>
       <div className="flex flex-wrap px-[77px] bg-gray-100 gap-[28px]">
         {cards.map((card: cardDetailType, key: number) => (
-          <Card key={key} cardDetail={card} />
+          <ProductCard key={key} cardDetail={card} />
         ))}
       </div>
     </div>

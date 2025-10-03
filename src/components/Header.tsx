@@ -4,8 +4,15 @@ import Logo from "../../public/emarketLogo-l.png";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { ShoppingCart, User } from "lucide-react";
+import { cookies } from "next/headers";
+import UserDropdownMenu from "./UserDropdownMenu";
 
-const Header = () => {
+const Header = async () => {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("access_token")?.value;
+  const role = cookieStore.get("user_role")?.value;
+  const name = cookieStore.get("user_name")?.value;
+
   return (
     <div className="flex flex-col flex-1 w-full h-30 items-center justify-center bg-black">
       <div className="flex max-w-375 w-4/5 items-center font-bold gap-6 justify-between">
@@ -20,14 +27,20 @@ const Header = () => {
         <div className="not-md:hidden">
           <SearchBar />
         </div>
-        <div className="flex text-white font-semibold">
-          <Link className="flex" href={""}>
-            <User color="white" />
-            Login
-          </Link>
-          <div>/</div>
-          <Link href={""}>register</Link>
-        </div>
+        {name ? (
+          <div>
+            <UserDropdownMenu name={name} />
+          </div>
+        ) : (
+          <div className="flex text-white font-semibold">
+            <Link className="flex" href={"/account/login"}>
+              <User color="white" />
+              Login
+            </Link>
+            <div>/</div>
+            <Link href={""}>register</Link>
+          </div>
+        )}
         <Link className="not-md:hidden" href={""}>
           <ShoppingCart color="white" />
         </Link>
