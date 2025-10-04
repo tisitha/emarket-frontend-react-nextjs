@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Logout from "./Logout";
 
 const UserDropdownMenu = ({ name }: { name: string }) => {
   return (
@@ -14,7 +13,7 @@ const UserDropdownMenu = ({ name }: { name: string }) => {
           <Link href={""}>Edit Account</Link>
         </li>
         <li>
-          <Link href={""}>Logout</Link>
+          <Logout />
         </li>
       </ul>
     </details>

@@ -49,9 +49,8 @@ export async function POST(req: Request) {
       path: '/',
     });
 
-    return NextResponse.json({ error: "s" }, { status: 200 });
+    return NextResponse.json({ message: "Login successfully" }, { status: 200 });
   }
    else{
-    console.error(res);
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }}

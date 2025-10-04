@@ -2,7 +2,6 @@
 
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 type carouseType = {
@@ -11,25 +10,11 @@ type carouseType = {
   name: string;
 };
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-const fetchCarousel = async () => {
-  const res = await fetch(`${apiUrl}/open/carousel`);
-  if (!res.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return res.json();
+type Props = {
+  carouses: carouseType[];
 };
 
-const Sweeper = () => {
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["carousel"],
-    queryFn: fetchCarousel,
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error occurred: {error.message}</div>;
-
+const Sweeper = ({ carouses }: Props) => {
   return (
     <Carousel
       opts={{
@@ -40,11 +25,10 @@ const Sweeper = () => {
           delay: 5000,
         }),
       ]}
-      className="max-w-[1920px] bg-black"
     >
       <CarouselContent>
-        {data.map((carouse: carouseType, key: number) => (
-          <CarouselItem key={key} className="pl-0 ">
+        {carouses.map((carouse: carouseType, key: number) => (
+          <CarouselItem key={key} className="max-w-[1920px] px-0 ">
             <Image
               src={carouse.imgUrl}
               height={660}

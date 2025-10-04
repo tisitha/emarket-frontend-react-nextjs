@@ -38,7 +38,7 @@ const Header = async () => {
               Login
             </Link>
             <div>/</div>
-            <Link href={""}>register</Link>
+            <Link href={"/account/register"}>register</Link>
           </div>
         )}
         <Link className="not-md:hidden" href={""}>

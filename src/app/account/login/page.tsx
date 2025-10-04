@@ -11,33 +11,39 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Ellipsis } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { toast } from "sonner";
 
 export default function LoginForm() {
-  const [massage, setMessage] = useState("");
+  const [isPending, startTransaction] = useTransition();
 
-  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const router = useRouter();
 
-    const formData = new FormData(e.currentTarget);
-    const json = Object.fromEntries(formData.entries());
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    startTransaction(async () => {
+      e.preventDefault();
 
-    const res = await fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify(json),
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
+      const formData = new FormData(e.currentTarget);
+      const json = Object.fromEntries(formData.entries());
+
+      const res = await fetch("/api/login", {
+        method: "POST",
+        body: JSON.stringify(json),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+
+      if (res.status == 200) {
+        toast.success("Logging successfull");
+        router.push("/");
+      } else {
+        toast.error("Email or password incorrect");
+      }
     });
-
-    const clonedResponse = res.clone();
-
-    if (clonedResponse.ok) {
-      window.location.href = "/";
-    } else {
-      console.log(clonedResponse);
-    }
-  }
+  };
 
   return (
     <div className="h-screen flex flex-col">
@@ -81,15 +87,19 @@ export default function LoginForm() {
               </div>
             </CardContent>
             <CardFooter className="flex-col gap-2 mt-5">
-              <Button type="submit" className="w-full hover:cursor-pointer">
-                Login
+              <Button
+                type="submit"
+                className="w-full hover:cursor-pointer"
+                disabled={isPending}
+              >
+                {isPending ? <Ellipsis /> : <>Login</>}
               </Button>
               <Button
                 formNoValidate
                 variant="outline"
                 className="w-full hover:cursor-pointer mt-3"
               >
-                <Link href={""}>Create new account</Link>
+                <Link href={"/account/register"}>Create new account</Link>
               </Button>
             </CardFooter>
           </form>
