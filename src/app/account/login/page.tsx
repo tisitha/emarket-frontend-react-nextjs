@@ -61,8 +61,10 @@ export default function LoginForm() {
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    id="email"
                     type="email"
                     name="email"
+                    autoComplete="email"
                     placeholder="m@example.com"
                     required
                   />
@@ -95,7 +97,7 @@ export default function LoginForm() {
                 {isPending ? <Ellipsis /> : <>Login</>}
               </Button>
               <Button
-                formNoValidate
+                type="button"
                 variant="outline"
                 className="w-full hover:cursor-pointer mt-3"
               >

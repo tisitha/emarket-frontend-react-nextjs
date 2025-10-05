@@ -7,7 +7,7 @@ type provinceType = {
   name: string;
 };
 
-const RegisterPage = async () => {
+const UserRegisterPage = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const data = await fetch(`${apiUrl}/open/province`);
@@ -25,4 +25,4 @@ const RegisterPage = async () => {
   );
 };
 
-export default RegisterPage;
+export default UserRegisterPage;

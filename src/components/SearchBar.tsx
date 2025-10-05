@@ -49,6 +49,7 @@ const CommandSearchBar = () => {
     <div className="font-normal">
       <div className="flex flex-1 rounded-lg border shadow-md min-w-[250px] md:min-w-[450px] bg-white">
         <input
+          name="search"
           className="w-full pl-4 focus:outline-none"
           onChange={(e) => handleSearch(e.target.value)}
           onFocus={checkFocus}

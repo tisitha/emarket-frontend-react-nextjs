@@ -7,12 +7,9 @@ const Footer = () => {
     <div className="bg-white flex justify-around items-center pt-30 pb-20 outline">
       <div>
         <Link href={""}>
-          <Image
-            width={125}
-            height={40}
-            src="/emarketLogo-l.svg"
-            alt="endlogo"
-          />
+          <div className="relative w-[140px] h-[140px]">
+            <Image fill sizes="auto" src="/emarketLogo-l.svg" alt="endlogo" />
+          </div>
         </Link>
         <h3>©2025. All Rights Reserved</h3>
       </div>

@@ -105,6 +105,7 @@ const RegisterForm = ({ provinces, vendor }: Props) => {
               id="fname"
               type="text"
               name="fname"
+              autoComplete="given-name"
               placeholder="John"
               required
             />
@@ -115,6 +116,7 @@ const RegisterForm = ({ provinces, vendor }: Props) => {
               id="lname"
               type="text"
               name="lname"
+              autoComplete="family-name"
               placeholder="Doe"
               required
             />
@@ -125,6 +127,7 @@ const RegisterForm = ({ provinces, vendor }: Props) => {
               id="email"
               type="email"
               name="email"
+              autoComplete="email"
               placeholder="m@example.com"
               required
             />
@@ -158,9 +161,10 @@ const RegisterForm = ({ provinces, vendor }: Props) => {
           <div className="grid gap-2">
             <Label htmlFor="phoneNo">Contact No</Label>
             <Input
-              id="phoneNO"
+              id="phoneNo"
               type="tel"
               name="phoneNo"
+              autoComplete="tel"
               placeholder="+000000000"
               required
             />
@@ -170,6 +174,7 @@ const RegisterForm = ({ provinces, vendor }: Props) => {
             <Input
               id="address"
               type="text"
+              autoComplete="address-level3"
               name="address"
               placeholder="0/0, streat, city"
               required

@@ -23,12 +23,11 @@ const ProductCard = ({ cardDetail }: Props) => {
       href={""}
       className="h-[350px] w-[175px] hover:shadow-2xl rounded-2xl flex flex-col justify-between bg-white"
     >
-      <div className="h-[175px] w-[175px]  rounded-2xl ">
+      <div className="relative h-[175px] w-[175px]  rounded-2xl ">
         <Image
           alt={cardDetail.name}
           src={cardDetail.imgUrl}
-          width={175}
-          height={175}
+          fill
           unoptimized
           className=" rounded-2xl "
         />

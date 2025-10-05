@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ShoppingCart, User } from "lucide-react";
 import { cookies } from "next/headers";
 import UserDropdownMenu from "./UserDropdownMenu";
+import Notification from "./Notification";
 
 const Header = async () => {
   const cookieStore = await cookies();
@@ -32,24 +33,31 @@ const Header = async () => {
             <UserDropdownMenu name={name} />
           </div>
         ) : (
-          <div className="flex text-white font-semibold">
+          <div className="flex text-white font-semibold gap-1">
             <Link className="flex" href={"/account/login"}>
-              <User color="white" />
+              <User color="white" className="pr-1" />
               Login
             </Link>
             <div>/</div>
             <Link href={"/account/register"}>register</Link>
           </div>
         )}
-        <Link className="not-md:hidden" href={""}>
-          <ShoppingCart color="white" />
-        </Link>
+        {token && (
+          <>
+            <Link className="not-md:hidden" href={""}>
+              <ShoppingCart color="white" />
+            </Link>
+            <Notification userToken={token} />
+          </>
+        )}
       </div>
       <div className="flex items-center gap-6 mt-6 md:hidden">
         <SearchBar />
-        <Link href={""}>
-          <ShoppingCart color="white" />
-        </Link>
+        {token && (
+          <Link href={""}>
+            <ShoppingCart color="white" />
+          </Link>
+        )}
       </div>
     </div>
   );

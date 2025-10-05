@@ -7,12 +7,15 @@ const FooterSmall = () => {
     <div className="bg-white flex justify-around items-center py-8 outline">
       <div>
         <Link href={""}>
-          <Image
-            width={125}
-            height={40}
-            src="/emarketLogo-l.svg"
-            alt="endlogo"
-          />
+          <div className="relative w-[140px] h-[140px]">
+            <Image
+              loading="lazy"
+              fill
+              sizes="auto"
+              src="/emarketLogo-l.svg"
+              alt="endlogo"
+            />
+          </div>
         </Link>
         <h3>©2025. All Rights Reserved</h3>
       </div>
