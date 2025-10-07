@@ -1,3 +1,4 @@
+import { apiFetch } from "@/lib/apiClient.server";
 import Link from "next/link";
 import React from "react";
 
@@ -7,10 +8,7 @@ type categoryType = {
 };
 
 const CategoryTab = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const data = await fetch(`${apiUrl}/open/category/root`);
-  const categories: categoryType[] = await data.json();
+  const categories = await apiFetch<categoryType[]>(`/open/category/root`);
 
   return (
     <div className="max-w-[1366px]">
@@ -18,15 +16,16 @@ const CategoryTab = async () => {
         Categories
       </div>
       <div className="flex flex-wrap px-[77px] bg-gray-100 gap-[20px]">
-        {categories.map((category, key) => (
-          <Link
-            href={""}
-            className="rounded-4xl p-1 pl-3 pr-3 font-medium bg-white outline-1"
-            key={key}
-          >
-            {category.name}
-          </Link>
-        ))}
+        {categories &&
+          categories.map((category, key) => (
+            <Link
+              href={""}
+              className="rounded-4xl p-1 pl-3 pr-3 font-medium bg-white outline-1"
+              key={key}
+            >
+              {category.name}
+            </Link>
+          ))}
       </div>
     </div>
   );

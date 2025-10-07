@@ -16,7 +16,7 @@ import { useTransition } from "react";
 import { Ellipsis } from "lucide-react";
 
 type Props = {
-  provinces: provinceType[];
+  provinces?: provinceType[];
   vendor: boolean;
 };
 
@@ -33,7 +33,7 @@ type errdataType = {
   }[];
 };
 
-const RegisterForm = ({ provinces, vendor }: Props) => {
+const RegisterForm = ({ provinces = [], vendor }: Props) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const [isPending, startTransaction] = useTransition();

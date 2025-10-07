@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import { apiFetch } from "@/lib/apiClient.server";
 
 type cardDetailType = {
   id: number;
@@ -14,10 +15,7 @@ type cardDetailType = {
 };
 
 const DealsTab = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const data = await fetch(`${apiUrl}/open/product/deals/18`);
-  const cards: cardDetailType[] = await data.json();
+  const cards = await apiFetch<cardDetailType[]>(`/open/product/deals/18`);
 
   return (
     <div className="max-w-[1366px] pb-[70px]">
@@ -25,9 +23,10 @@ const DealsTab = async () => {
         Best Deals
       </div>
       <div className="flex flex-wrap px-[77px] bg-gray-100 gap-[28px]">
-        {cards.map((card: cardDetailType, key: number) => (
-          <ProductCard key={key} cardDetail={card} />
-        ))}
+        {cards &&
+          cards.map((card: cardDetailType, key: number) => (
+            <ProductCard key={key} cardDetail={card} />
+          ))}
       </div>
     </div>
   );

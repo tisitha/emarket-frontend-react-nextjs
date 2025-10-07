@@ -1,5 +1,6 @@
 import FooterSmall from "@/components/FooterSmall";
 import RegisterForm from "@/components/RegisterForm";
+import { apiFetch } from "@/lib/apiClient.server";
 import React from "react";
 
 type provinceType = {
@@ -8,10 +9,7 @@ type provinceType = {
 };
 
 const VendorRegisterPage = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const data = await fetch(`${apiUrl}/open/province`);
-  const provinces: provinceType[] = await data.json();
+  const provinces = await apiFetch<provinceType[]>(`/open/province`);
 
   return (
     <div className="h-screen flex flex-col">

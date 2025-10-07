@@ -3,6 +3,7 @@ import DealsTab from "@/components/DealsTab";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Sweeper from "@/components/Sweeper";
+import { apiFetch } from "@/lib/apiClient.server";
 
 type carouseType = {
   id: number;
@@ -11,10 +12,7 @@ type carouseType = {
 };
 
 export default async function Home() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const res = await fetch(`${apiUrl}/open/carousel`);
-  const carouses: carouseType[] = await res.json();
+  const carousels = await apiFetch<carouseType[]>(`/open/carousel`);
 
   return (
     <>
@@ -22,7 +20,7 @@ export default async function Home() {
       <div className=" bg-gray-100 flex justify-center">
         <div className="flex flex-col items-center max-w-[1920px]">
           <div className="flex w-full justify-center">
-            <Sweeper carouses={carouses} />
+            <Sweeper carousels={carousels} />
           </div>
           <CategoryTab />
           <DealsTab />
