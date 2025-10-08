@@ -2,19 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  cardDetail: cardDetailType;
-};
-
-type cardDetailType = {
-  id: number;
-  imgUrl: string;
-  name: string;
-  price: number | null;
-  deal: number | null;
-  category: {
-    id: number;
-    name: string;
-  };
+  cardDetail: productType;
 };
 
 const ProductCard = ({ cardDetail }: Props) => {
