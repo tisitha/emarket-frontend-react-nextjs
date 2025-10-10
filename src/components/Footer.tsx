@@ -4,9 +4,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-white flex justify-around items-center pt-30 pb-20 outline">
+    <div className="bg-white flex justify-around items-center flex-col md:flex-row pt-30 pb-20 outline">
       <div>
-        <Link href={""}>
+        <Link href={"/"}>
           <div className="relative w-[140px] h-[140px]">
             <Image fill sizes="auto" src="/emarketLogo-l.svg" alt="endlogo" />
           </div>
