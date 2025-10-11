@@ -36,14 +36,11 @@ const Sweeper = ({ carousels = initialCarousel }: Props) => {
     >
       <CarouselContent>
         {carousels.map((carousel: carouselType, key: number) => (
-          <CarouselItem key={key} className="max-w-[1920px] px-0 ">
-            <Image
-              src={carousel.imgUrl}
-              height={660}
-              width={1920}
-              unoptimized
-              alt={carousel.name}
-            />
+          <CarouselItem
+            key={key}
+            className="max-w-[1920px] relative w-full px-0 "
+          >
+            <Image src={carousel.imgUrl} fill unoptimized alt={carousel.name} />
           </CarouselItem>
         ))}
       </CarouselContent>

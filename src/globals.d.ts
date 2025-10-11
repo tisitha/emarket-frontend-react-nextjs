@@ -102,6 +102,33 @@ declare global {
     name: string;
     href: string;
   };
+
+  type cartType = {
+    cartItems: cartItemType[];
+    subTotalCost: number;
+    deliveryCost: number;
+    totalCost: number;
+  };
+
+  type cartItemType = {
+    id: string;
+    user: userType;
+    quantity: number;
+    product: productType;
+  };
+
+  type paymentMethodType = {
+    id: number;
+    name: string;
+  };
+
+  type errdataType = {
+    detail: string;
+    errors: {
+      field: string;
+      message: string;
+    }[];
+  };
 }
 
 export {};
