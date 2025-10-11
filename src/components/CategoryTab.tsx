@@ -19,7 +19,7 @@ const CategoryTab = async () => {
         {categories &&
           categories.map((category, key) => (
             <Link
-              href={""}
+              href={`/products?category=${category.id}`}
               className="rounded-4xl p-1 pl-3 pr-3 font-medium bg-white outline-1"
               key={key}
             >

@@ -44,7 +44,7 @@ const Header = async () => {
         )}
         {token && (
           <>
-            <Link className="not-md:hidden" href={""}>
+            <Link className="not-md:hidden" href={"/cart"}>
               <ShoppingCart color="white" />
             </Link>
             <Notification userToken={token} />
@@ -54,7 +54,7 @@ const Header = async () => {
       <div className="flex items-center gap-6 mt-6 md:hidden">
         <SearchBar />
         {token && (
-          <Link href={""}>
+          <Link href={"/cart"}>
             <ShoppingCart color="white" />
           </Link>
         )}

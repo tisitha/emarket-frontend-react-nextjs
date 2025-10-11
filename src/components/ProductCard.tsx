@@ -8,7 +8,7 @@ type Props = {
 const ProductCard = ({ cardDetail }: Props) => {
   return (
     <Link
-      href={""}
+      href={`/product?id=${cardDetail.id}`}
       className="h-[350px] w-[175px] hover:shadow-2xl rounded-2xl flex flex-col justify-between bg-white"
     >
       <div className="relative h-[175px] w-[175px]  rounded-2xl ">
