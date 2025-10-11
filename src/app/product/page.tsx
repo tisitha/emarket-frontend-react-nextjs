@@ -34,7 +34,7 @@ const page = async ({ searchParams }: Props) => {
   const product = await apiFetch<productType>(`/open/product/${id}`);
 
   if (product == null) {
-    return notFound;
+    notFound();
   }
 
   const reviewPass = token
