@@ -46,7 +46,7 @@ const page = async () => {
                     {cart?.cartItems.map((c, i) => (
                       <tr key={i}>
                         <td>
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 max-w-[450px]">
                             <div className="avatar">
                               <div className="h-12 w-12">
                                 <Image
@@ -77,9 +77,17 @@ const page = async () => {
                             </div>
                           </div>
                         </td>
-                        <td className="flex flex-col items-center justify-center text-center">
-                          {c.quantity}
-                          <DeleteCartItem cartItemId={c.id} token={token} />
+                        <td>
+                          <div className="flex flex-col justify-center">
+                            {c.quantity > c.product.quantity ? (
+                              <div className="text-center bg-red-500 text-white">
+                                Out of stock
+                              </div>
+                            ) : (
+                              <div className="text-center">{c.quantity}</div>
+                            )}
+                            <DeleteCartItem cartItemId={c.id} token={token} />
+                          </div>
                         </td>
                         <td className="text-center">
                           Rs.{" "}
@@ -124,7 +132,14 @@ const page = async () => {
                   paymentMethods={paymentMethods}
                   token={token}
                   cod={true}
-                  disabled={cart?.cartItems.length == 0}
+                  disabled={
+                    cart?.cartItems.length == 0 ||
+                    Boolean(
+                      cart?.cartItems.some(
+                        (c) => c.quantity > c.product.quantity
+                      )
+                    )
+                  }
                 />
               </div>
             </div>
