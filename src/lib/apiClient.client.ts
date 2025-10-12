@@ -14,13 +14,10 @@ export async function apiFetchClient<T>(
       credentials: "include",
     });
 
-    if (res.ok) {
-      try {
-        const output = (await res.json()) as T;
-        return output;
-      } catch {
-        return true;
-      }
+    if (res.status == 200 || res.status == 201) {
+      return (await res.json()) as T;
+    } else if (res.status == 202 || res.status == 204) {
+      return true;
     } else {
       console.error("[apiFetch/client] HTTP error:", res.status);
       const errdata: errdataType = await res.json();

@@ -20,19 +20,6 @@ type Props = {
   vendor: boolean;
 };
 
-type provinceType = {
-  id: number;
-  name: string;
-};
-
-type errdataType = {
-  detail: string;
-  errors: {
-    field: string;
-    message: string;
-  }[];
-};
-
 const RegisterForm = ({ provinces = [], vendor }: Props) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

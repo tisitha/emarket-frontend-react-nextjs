@@ -129,6 +129,28 @@ declare global {
       message: string;
     }[];
   };
+
+  type accountType = {
+    id: string;
+
+    fname: string;
+
+    lname: string;
+
+    email: string;
+
+    phoneNo: string;
+
+    address: string;
+
+    province: provinceType;
+
+    businessName: string;
+
+    bankAccountNo: string;
+
+    bank: string;
+  };
 }
 
 export {};
