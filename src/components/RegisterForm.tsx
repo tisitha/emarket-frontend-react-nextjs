@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useTransition } from "react";
 import { Ellipsis } from "lucide-react";
+import { apiFetchClient } from "@/lib/apiClient.client";
 
 type Props = {
   provinces?: provinceType[];
@@ -21,8 +22,6 @@ type Props = {
 };
 
 const RegisterForm = ({ provinces = [], vendor }: Props) => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
   const [isPending, startTransaction] = useTransition();
 
   const router = useRouter();
@@ -43,37 +42,18 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
         provinceId: Number(rawData.provinceId),
       };
 
-      let res;
+      const url = vendor ? "/auth/register-vendor" : "/auth/register-user";
 
-      if (vendor) {
-        res = await fetch(`${apiUrl}/auth/register-vendor`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-          credentials: "include",
-        });
-      } else {
-        res = await fetch(`${apiUrl}/auth/register-user`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-          credentials: "include",
-        });
-      }
+      const res = await apiFetchClient(`${url}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
 
-      if (res.status == 200) {
-        toast.success("User registered successfully");
+      if (res) {
+        toast.success("Account registered successfully");
         router.push("/account/login");
       } else {
-        const errdata: errdataType = await res.json();
-        if (errdata.detail) {
-          toast.error(errdata.detail);
-        }
-        if (errdata.errors) {
-          errdata.errors.forEach((item) => {
-            toast.error(item.field + " - " + item.message);
-          });
-        }
+        toast.error("Sorry, something went wrong! please try again!");
       }
     });
   };
