@@ -1,19 +1,13 @@
 "use client";
 
 import React, { useState, useTransition } from "react";
-import {
-  Popover,
-  PopoverAnchor,
-  PopoverContent,
-  PopoverTrigger,
-} from "./ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { PopoverClose } from "@radix-ui/react-popover";
 
 type Props = {
   title: string;
@@ -58,17 +52,16 @@ const DataEditBtn = ({
       const data = {
         [name]: currentValue,
       };
-      console.log(JSON.stringify(data));
       const res = await apiFetchClient(`${baseUrl}`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
         body: JSON.stringify(data),
       });
       if (res) {
-        toast("saved!");
+        toast("Saved!");
         router.refresh();
       } else {
-        toast("Something went wrong!");
+        toast.error("Sorry, something went wrong! Please try again.");
       }
     });
   };

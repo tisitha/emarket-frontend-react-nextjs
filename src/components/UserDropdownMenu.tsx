@@ -10,7 +10,7 @@ const UserDropdownMenu = ({ name }: { name: string }) => {
           <Link href={""}>Dashboard</Link>
         </li>
         <li>
-          <Link href={""}>Edit Account</Link>
+          <Link href={"/settings"}>Settings</Link>
         </li>
         <li>
           <Logout />
