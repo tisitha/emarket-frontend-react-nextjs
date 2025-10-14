@@ -7,7 +7,7 @@ const UserDropdownMenu = ({ name }: { name: string }) => {
       <summary className="btn m-1 rounded-3xl">Hello {name}</summary>
       <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
         <li>
-          <Link href={""}>Dashboard</Link>
+          <Link href={"/dashboard"}>Dashboard</Link>
         </li>
         <li>
           <Link href={"/settings"}>Settings</Link>
