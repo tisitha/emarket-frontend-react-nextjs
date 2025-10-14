@@ -131,7 +131,11 @@ const page = async () => {
                 <CheckOut
                   paymentMethods={paymentMethods}
                   token={token}
-                  cod={true}
+                  cod={
+                    !Boolean(
+                      cart?.cartItems.some((c) => c.product.cod == false)
+                    )
+                  }
                   disabled={
                     cart?.cartItems.length == 0 ||
                     Boolean(
