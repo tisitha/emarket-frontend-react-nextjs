@@ -1,22 +1,29 @@
 declare global {
   type productResponseType = {
     productResponseDtoList: productType[];
-    totalElement: 0;
-    pageCount: 0;
+    totalElement: number;
+    pageCount: number;
     isLast: boolean;
   };
 
   type questionResponseType = {
     questionResponseDtoList: questionType[];
-    totalElement: 0;
-    pageCount: 0;
+    totalElement: number;
+    pageCount: number;
     isLast: boolean;
   };
 
   type reviewResponseType = {
     reviewResponseDtoList: reviewType[];
-    totalElement: 0;
-    pageCount: 0;
+    totalElement: number;
+    pageCount: number;
+    isLast: boolean;
+  };
+
+  type orderResponseType = {
+    orderResponseDtoList: orderType[];
+    totalElement: number;
+    pageCount: number;
     isLast: boolean;
   };
 
@@ -98,7 +105,7 @@ declare global {
     email: string;
   };
 
-  type option = {
+  type sortOptionType = {
     name: string;
     href: string;
   };
@@ -150,6 +157,36 @@ declare global {
     bankAccountNo: string;
 
     bank: string;
+  };
+
+  type orderType = {
+    id: string;
+
+    userId: string;
+
+    orderStatus: string;
+
+    paymentMethodName: string;
+
+    productId: string;
+
+    productName: string;
+
+    cost: number;
+
+    vendorId: string;
+
+    vendorName: string;
+
+    date: string;
+
+    quantity: number;
+
+    subTotalCost: number;
+
+    deliveryCost: number;
+
+    totalCost: number;
   };
 }
 

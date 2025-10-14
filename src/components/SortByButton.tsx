@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {
-  options: option[];
+  options: sortOptionType[];
   id: string;
 };
 

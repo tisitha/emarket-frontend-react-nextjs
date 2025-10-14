@@ -10,8 +10,8 @@ import { Button } from "./ui/button";
 type Props = {
   warranties?: warrantyType[];
   provinces?: provinceType[];
-  currentCategory: number | null;
-  currentVendor: string | null;
+  currentCategory?: string | null;
+  currentVendor?: string | null;
   pagenumber: number;
   sortBy: string;
   dir: string;
@@ -20,8 +20,8 @@ type Props = {
 const FilterTab = ({
   warranties = [],
   provinces = [],
-  currentCategory,
-  currentVendor,
+  currentCategory = null,
+  currentVendor = null,
   pagenumber,
   sortBy,
   dir,
@@ -125,7 +125,7 @@ const FilterTab = ({
           type="number"
           min="0"
           max="9999999"
-          className="w-25 h-8"
+          className="w-25 h-8 focus:bg-white"
         />
         -
         <Input
@@ -135,7 +135,7 @@ const FilterTab = ({
           type="number"
           min="0"
           max="9999999"
-          className="w-25 h-8"
+          className="w-25 h-8 focus:bg-white"
         />
       </div>
       <br />
@@ -144,20 +144,42 @@ const FilterTab = ({
           id="stock"
           checked={stock}
           onCheckedChange={handleStockChange}
+          className="hover:cursor-pointer hover:bg-white"
         />
-        <Label htmlFor="stock">In Stock Only</Label>
+        <Label
+          htmlFor="stock"
+          className="hover:cursor-pointer hover:text-gray-600"
+        >
+          In Stock Only
+        </Label>
       </div>
       <div className="flex gap-6">
         <Checkbox
           id="freedelivery"
           checked={freeDelivery}
           onCheckedChange={handleFreeDeliveryChange}
+          className="hover:cursor-pointer hover:bg-white"
         />
-        <Label htmlFor="freedelivery">Free Delivery Only</Label>
+        <Label
+          htmlFor="freedelivery"
+          className="hover:cursor-pointer hover:text-gray-600"
+        >
+          Free Delivery Only
+        </Label>
       </div>
       <div className="flex gap-6">
-        <Checkbox id="cod" checked={cod} onCheckedChange={handleCodChange} />
-        <Label htmlFor="cod">Cash On Delivery Only</Label>
+        <Checkbox
+          id="cod"
+          checked={cod}
+          onCheckedChange={handleCodChange}
+          className="hover:cursor-pointer hover:bg-white"
+        />
+        <Label
+          htmlFor="cod"
+          className="hover:cursor-pointer hover:text-gray-600"
+        >
+          Cash On Delivery Only
+        </Label>
       </div>
       <br />
       <div className="flex flex-col gap-2">
@@ -167,10 +189,11 @@ const FilterTab = ({
             <Checkbox
               id={`province${i}`}
               onCheckedChange={(e) => handleProvinceChange(p.id, e)}
+              className="hover:cursor-pointer hover:bg-white"
             />
             <Label
               htmlFor={`province${i}`}
-              className="font-normal text-gray-900"
+              className="font-normal text-gray-900 hover:cursor-pointer hover:text-gray-600"
             >
               {p.name}
             </Label>
@@ -185,10 +208,11 @@ const FilterTab = ({
             <Checkbox
               id={`warranty${i}`}
               onCheckedChange={(e) => handleWarrantyChange(w.id, e)}
+              className="hover:cursor-pointer hover:bg-white"
             />
             <Label
               htmlFor={`warranty${i}`}
-              className="font-normal text-gray-900"
+              className="font-normal text-gray-900 hover:cursor-pointer hover:text-gray-600"
             >
               {w.name}
             </Label>

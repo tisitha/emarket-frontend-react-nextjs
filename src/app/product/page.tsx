@@ -79,7 +79,7 @@ const page = async ({ searchParams }: Props) => {
     body: questionsGetRequest,
   });
 
-  const reviewSortOptions: option[] = [
+  const reviewSortOptions: sortOptionType[] = [
     {
       name: "Rate: low to high",
       href: `/product?id=${id}&qpagenumber=${qpagenumber}&qsortby=${qsortby}&qdir=${qdir}&rpagenumber=${rpagenumber}&rsortby=rate&rdir=asc`,
@@ -98,7 +98,7 @@ const page = async ({ searchParams }: Props) => {
     },
   ];
 
-  const questionSortOptions: option[] = [
+  const questionSortOptions: sortOptionType[] = [
     {
       name: "Date: old to new",
       href: `/product?id=${id}&qpagenumber=${qpagenumber}&qsortby=date&qdir=asc&rpagenumber=${rpagenumber}&rsortby=${rsortby}&rdir=${rdir}`,
