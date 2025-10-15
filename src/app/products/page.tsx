@@ -7,6 +7,12 @@ import SortByButton from "@/components/SortByButton";
 import { apiFetch } from "@/lib/apiClient.server";
 import Link from "next/link";
 import React from "react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { ChevronsUpDown } from "lucide-react";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -179,15 +185,34 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
                     ))}
                 </>
               )}
-              <FilterTab
-                provinces={provinces}
-                warranties={warranties}
-                currentCategory={category ? String(category) : null}
-                currentVendor={vendor ? String(vendor) : null}
-                pagenumber={Number(pagenumber)}
-                sortBy={String(sortBy)}
-                dir={String(dir)}
-              />
+              <Collapsible className="mt-5 md:hidden">
+                <CollapsibleTrigger className="bg-gray-300 rounded-2xl hover:bg-white active:bg-white p-2 flex hover:cursor-pointer">
+                  <span>Filters&nbsp;</span>
+                  <ChevronsUpDown />
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <FilterTab
+                    provinces={provinces}
+                    warranties={warranties}
+                    currentCategory={category ? String(category) : null}
+                    currentVendor={vendor ? String(vendor) : null}
+                    pagenumber={Number(pagenumber)}
+                    sortBy={String(sortBy)}
+                    dir={String(dir)}
+                  />
+                </CollapsibleContent>
+              </Collapsible>
+              <div className="hidden md:block">
+                <FilterTab
+                  provinces={provinces}
+                  warranties={warranties}
+                  currentCategory={category ? String(category) : null}
+                  currentVendor={vendor ? String(vendor) : null}
+                  pagenumber={Number(pagenumber)}
+                  sortBy={String(sortBy)}
+                  dir={String(dir)}
+                />
+              </div>
             </div>
             <div className="max-w-[900px] w-full">
               <div className="flex justify-end pr-40 pb-10">
