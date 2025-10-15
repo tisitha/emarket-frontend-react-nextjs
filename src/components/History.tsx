@@ -3,6 +3,7 @@ import { Package } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import CustomPagination from "./CustomPagination";
+import OrderCancelBtn from "./OrderCancelBtn";
 
 type Props = {
   token: string;
@@ -37,7 +38,14 @@ const History = async ({ token, pageNumber = 0 }: Props) => {
               <Link href={`/products?vendor=${o.vendorId}`}>
                 {o.vendorName}
               </Link>
-              <div className="text-blue-700 font-light">{o.orderStatus}</div>
+              <div className="flex items-end flex-col gap-2">
+                <div className="text-blue-700 font-light">{o.orderStatus}</div>
+                {(o.orderStatus == "PENDING" ||
+                  o.orderStatus == "PROCESSING" ||
+                  o.orderStatus == "SHIPPED") && (
+                  <OrderCancelBtn orderId={o.id} token={token} />
+                )}
+              </div>
             </div>
             <div className="p-5">
               <div>{o.productName}</div>
