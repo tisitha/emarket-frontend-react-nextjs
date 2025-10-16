@@ -3,14 +3,24 @@ import { Package } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import CustomPagination from "./CustomPagination";
-import OrderCancelBtn from "./OrderCancelBtn";
+import OrderStatusChangebtn from "./OrderStatusChangebtn";
 
 type Props = {
   token: string;
   pageNumber?: number;
+  isVendor?: boolean;
+  version: "USER" | "ADMIN" | "VENDOR";
+  prefix: string;
+  postfix: string;
 };
 
-const History = async ({ token, pageNumber = 0 }: Props) => {
+const Orders = async ({
+  token,
+  pageNumber = 0,
+  version,
+  prefix,
+  postfix,
+}: Props) => {
   const req = {
     pageNumber: pageNumber,
     pageSize: 10,
@@ -18,7 +28,14 @@ const History = async ({ token, pageNumber = 0 }: Props) => {
     dir: "desc",
   };
 
-  const res = await apiFetch<orderResponseType>("/order/user", {
+  const url =
+    version == "ADMIN"
+      ? "/admin/order/deliver/"
+      : version == "VENDOR"
+      ? "/order/vendor"
+      : "/order/user";
+
+  const res = await apiFetch<orderResponseType>(`${url}`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
     body: req,
@@ -27,9 +44,9 @@ const History = async ({ token, pageNumber = 0 }: Props) => {
   return (
     <div>
       {res?.orderResponseDtoList.length == 0 ? (
-        <div className="flex text-gray-600 py-10">
+        <div className="flex text-gray-600 p-10">
           <Package color="gray" />
-          &nbsp;You haven't brought anything yet.
+          &nbsp;Empty.
         </div>
       ) : (
         res?.orderResponseDtoList.map((o, i) => (
@@ -40,11 +57,26 @@ const History = async ({ token, pageNumber = 0 }: Props) => {
               </Link>
               <div className="flex items-end flex-col gap-2">
                 <div className="text-blue-700 font-light">{o.orderStatus}</div>
-                {(o.orderStatus == "PENDING" ||
-                  o.orderStatus == "PROCESSING" ||
-                  o.orderStatus == "SHIPPED") && (
-                  <OrderCancelBtn orderId={o.id} token={token} />
-                )}
+                {version == "ADMIN"
+                  ? o.orderStatus == "SHIPPED" && (
+                      <>
+                        <OrderStatusChangebtn
+                          orderId={o.id}
+                          token={token}
+                          version={"DELIVER"}
+                        />
+                      </>
+                    )
+                  : (o.orderStatus == "PENDING" ||
+                      o.orderStatus == "PROCESSING") && (
+                      <>
+                        <OrderStatusChangebtn
+                          orderId={o.id}
+                          token={token}
+                          version={version == "VENDOR" ? "UPDATE" : "CANCEL"}
+                        />
+                      </>
+                    )}
               </div>
             </div>
             <div className="p-5">
@@ -78,11 +110,11 @@ const History = async ({ token, pageNumber = 0 }: Props) => {
         pageNumber={pageNumber}
         isLast={Boolean(res?.isLast)}
         pageCount={Number(res?.pageCount)}
-        prefix={"/dashboard?ohpagenumber="}
-        postfix={""}
+        prefix={prefix}
+        postfix={postfix}
       />
     </div>
   );
 };
 
-export default History;
+export default Orders;

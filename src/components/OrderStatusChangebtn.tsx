@@ -1,6 +1,5 @@
 "use client";
 import React, { useTransition } from "react";
-import { Button } from "./ui/button";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
 import {
@@ -17,15 +16,23 @@ import {
 type Props = {
   orderId: string;
   token: string;
+  version: "CANCEL" | "DELIVER" | "UPDATE";
 };
 
-const OrderCancelBtn = ({ orderId, token }: Props) => {
+const OrderStatusChangebtn = ({ orderId, token, version }: Props) => {
   const [isPending, startTransiction] = useTransition();
   const router = useRouter();
 
+  const url =
+    version == "DELIVER"
+      ? "/admin/order/deliver/"
+      : version == "UPDATE"
+      ? "/order/update/"
+      : "/order/cancel/";
+
   const handleClick = () => {
     startTransiction(async () => {
-      const res = await apiFetchClient(`/order/cancel/${orderId}`, {
+      const res = await apiFetchClient(`${url}${orderId}`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -37,11 +44,26 @@ const OrderCancelBtn = ({ orderId, token }: Props) => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
-        <Button className="bg-red-700 hover:cursor-pointer">
-          Cancel Order
-        </Button>
-      </AlertDialogTrigger>
+      {version == "DELIVER" ? (
+        <div>
+          <AlertDialogTrigger className="bg-green-700 hover:cursor-pointer text-sm text-white hover:bg-green-300 p-2 rounded-2xl">
+            Mark As Delivered
+          </AlertDialogTrigger>
+        </div>
+      ) : version == "UPDATE" ? (
+        <div className="flex gap-2">
+          <AlertDialogTrigger className="bg-green-700 hover:cursor-pointer text-sm text-white hover:bg-green-300 p-2 rounded-2xl">
+            Update Order Status
+          </AlertDialogTrigger>
+          <AlertDialogTrigger className="bg-red-700 hover:cursor-pointer text-sm text-white hover:bg-red-300 p-2 rounded-2xl">
+            Cancel The Order
+          </AlertDialogTrigger>
+        </div>
+      ) : (
+        <AlertDialogTrigger className="bg-red-700 hover:cursor-pointer text-sm text-white hover:bg-red-300 p-2 rounded-2xl">
+          Cancel The Order
+        </AlertDialogTrigger>
+      )}
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -60,4 +82,4 @@ const OrderCancelBtn = ({ orderId, token }: Props) => {
   );
 };
 
-export default OrderCancelBtn;
+export default OrderStatusChangebtn;

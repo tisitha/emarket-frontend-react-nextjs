@@ -30,7 +30,10 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
         };
         const res = await apiFetchClient(`/review`, {
           method: "POST",
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(data),
           credentials: "include",
         });
@@ -47,7 +50,10 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
         };
         const res = await apiFetchClient(`/question`, {
           method: "POST",
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(data),
           credentials: "include",
         });
@@ -108,7 +114,7 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
           />
         </div>
       )}
-      <Button type="submit" className="w-30">
+      <Button disabled={isPending} type="submit" className="w-30">
         {review ? "Add Review" : "Ask Question"}
       </Button>
     </form>

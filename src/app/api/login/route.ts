@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 type authResponseType = {
+  id: string;
   name: string;
   role: string;
   token: string;
@@ -23,6 +24,14 @@ export async function POST(req: Request) {
 
   if (res.ok) {
     const authResponse: authResponseType = await res.json();
+
+    cookieStore.set("user_id", authResponse.id, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24 * 7,
+      path: "/",
+    });
 
     cookieStore.set("access_token", authResponse.token, {
       httpOnly: true,

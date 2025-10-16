@@ -20,7 +20,7 @@ const SortByButton = ({ options, id }: Props) => {
       id={id}
       name={id}
       onChange={handleChange}
-      className="select h-9 w-40 outline"
+      className="select h-9 w-45 outline"
     >
       {options?.map((o, i) => (
         <option key={i} value={o.href}>

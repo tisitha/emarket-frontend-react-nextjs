@@ -95,7 +95,7 @@ declare global {
     answer: string;
     user: userType;
     date: string;
-    product: string;
+    product: productType;
   };
 
   type userType = {
