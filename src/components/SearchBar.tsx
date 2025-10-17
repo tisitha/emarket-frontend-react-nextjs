@@ -2,10 +2,16 @@
 
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { SearchIcon } from "lucide-react";
-import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useRef, useState } from "react";
 
 const CommandSearchBar = () => {
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [toggleSearchContent, setToggleSearchContent] = useState(false);
+  const [text, setText] = useState("");
+  const [searchList, setSearchList] = useState<productType[]>([]);
 
   const checkFocus = () => {
     setToggleSearchContent(true);
@@ -17,12 +23,13 @@ const CommandSearchBar = () => {
     }, 300);
   };
 
-  const [searchList, setSearchList] = useState<productType[]>([]);
-
-  const handleSearch = async (searchTerm: string) => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value;
+    setText(searchTerm.trim());
     if (searchTerm.trim() != "") {
+      const encoded = encodeURIComponent(searchTerm.trim());
       const res = await apiFetchClient<productType[]>(
-        `/open/search/${searchTerm.trim()}/10`
+        `/open/search?text=${encoded}&size=10`
       );
       if (res) {
         if (res != true) {
@@ -34,28 +41,43 @@ const CommandSearchBar = () => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && text != "") {
+      e.preventDefault();
+      router.push(`/catalog?text=${text.trim()}`);
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
+    }
+  };
+
   return (
-    <div className="font-normal">
-      <div className="flex flex-1 rounded-lg border shadow-md min-w-[250px] md:min-w-[450px] bg-white">
+    <div className="relative font-normal w-full">
+      <div className="flex flex-1 rounded-lg border shadow-md bg-white">
         <input
           name="search"
-          className="w-full pl-4 focus:outline-none"
-          onChange={(e) => handleSearch(e.target.value)}
+          className="w-full rounded-lg pl-4 focus:outline-none"
+          ref={inputRef}
+          onChange={handleChange}
           onFocus={checkFocus}
           onBlur={checkBlur}
+          onKeyDown={handleKeyDown}
           placeholder="What are you looking for..."
         />
-        <SearchIcon className="p-2 opacity-80 hover:cursor-pointer h-9 w-9 right-0" />
+        <Link href={text != "" ? `/catalog?text=${text.trim()}` : "#"}>
+          <SearchIcon className="p-2 opacity-80 hover:cursor-pointer h-9 w-9 right-0" />
+        </Link>
       </div>
       {toggleSearchContent && searchList.length > 0 && (
-        <div className="absolute rounded-lg border shadow-md min-w-[250px] md:min-w-[450px] z-1 bg-white">
-          {searchList.map((item, key) => (
-            <div
-              key={key}
-              className="pl-4 p-1 hover:bg-gray-200 hover:rounded-lg  hover:cursor-pointer"
+        <div className="absolute rounded-lg border w-full shadow-md z-2 bg-white">
+          {searchList.map((p, i) => (
+            <Link
+              href={`/product?id=${p.id}`}
+              key={i}
+              className="pl-4 p-1 hover:bg-gray-200 hover:rounded-lg line-clamp-1 hover:cursor-pointer"
             >
-              {item.name}
-            </div>
+              {p.name}
+            </Link>
           ))}
         </div>
       )}

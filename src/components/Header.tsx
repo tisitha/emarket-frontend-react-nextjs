@@ -16,7 +16,7 @@ const Header = async () => {
 
   return (
     <div className="flex flex-col flex-1 w-full h-30 items-center justify-center bg-black">
-      <div className="flex max-w-375 w-4/5 items-center font-bold gap-6 justify-between">
+      <div className="flex max-w-[1360px] w-full items-center font-bold gap-6 justify-evenly p-2">
         <Link href={"/"}>
           <Image
             src={Logo}
@@ -25,7 +25,7 @@ const Header = async () => {
             className="select-none"
           />
         </Link>
-        <div className="not-md:hidden">
+        <div className="not-md:hidden w-full max-w-150">
           <SearchBar />
         </div>
         {name ? (
@@ -44,20 +44,15 @@ const Header = async () => {
         )}
         {token && (
           <>
-            <Link className="not-md:hidden" href={"/cart"}>
+            <Notification userToken={token} />
+            <Link href={"/cart"}>
               <ShoppingCart color="white" />
             </Link>
-            <Notification userToken={token} />
           </>
         )}
       </div>
-      <div className="flex items-center gap-6 mt-6 md:hidden">
+      <div className="flex items-center w-full p-2 md:hidden">
         <SearchBar />
-        {token && (
-          <Link href={"/cart"}>
-            <ShoppingCart color="white" />
-          </Link>
-        )}
       </div>
     </div>
   );
