@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   questionId: number;
@@ -74,7 +75,7 @@ const AnswerQuestion = ({ questionId, question, token }: Props) => {
           onChange={handleChange}
         />
         <Button disabled={isPending} onClick={handleClick}>
-          Answer
+          {isPending ? <Spinner /> : "Answer"}
         </Button>
         <DialogClose asChild>
           <Button>Cancel</Button>

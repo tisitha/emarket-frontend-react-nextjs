@@ -13,6 +13,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { Spinner } from "./ui/spinner";
 type Props = {
   orderId: string;
   token: string;
@@ -34,7 +35,10 @@ const OrderStatusChangebtn = ({ orderId, token, version }: Props) => {
     startTransiction(async () => {
       const res = await apiFetchClient(`${url}${orderId}`, {
         method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (res) {
         router.refresh();
@@ -74,7 +78,7 @@ const OrderStatusChangebtn = ({ orderId, token, version }: Props) => {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction disabled={isPending} onClick={handleClick}>
-            Continue
+            {isPending ? <Spinner /> : "Continue"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

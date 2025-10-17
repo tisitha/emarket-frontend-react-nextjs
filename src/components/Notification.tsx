@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import useSWR from "swr";
 import { ScrollArea } from "./ui/scroll-area";
+import { apiFetchClient } from "@/lib/apiClient.client";
 
 const fetcher = async (url: string | URL | Request, token?: string) => {
   const res = await fetch(url, {
@@ -50,14 +51,14 @@ const Notification = ({ userToken }: { userToken?: string }) => {
 
   const markAsSeen = async (currentSeen?: boolean, notificationId?: number) => {
     if (!currentSeen) {
-      const res = await fetch(`${apiUrl}/notification/mark/${notificationId}`, {
-        method: "PUT",
+      const res = await apiFetchClient(`/notification/mark/${notificationId}`, {
+        method: "PATCH",
         credentials: "include",
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      if (res.ok) {
+      if (res) {
         mutate();
       }
     }
@@ -65,14 +66,14 @@ const Notification = ({ userToken }: { userToken?: string }) => {
 
   const markAllAsSeen = async () => {
     if (notificationData?.newNotificationCount > 0) {
-      const res = await fetch(`${apiUrl}/notification/mark/all`, {
-        method: "PUT",
+      const res = await apiFetchClient(`/notification/mark/all`, {
+        method: "PATCH",
         credentials: "include",
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      if (res.ok) {
+      if (res) {
         mutate();
       }
     }
@@ -89,10 +90,7 @@ const Notification = ({ userToken }: { userToken?: string }) => {
           )}
           <Bell color="white" />
         </div>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu bg-base-100 rounded-box z-1 w-150 grow-1 shadow-sm outline"
-        >
+        <ul className="dropdown-content menu bg-base-100 rounded-box z-1 w-150 grow-1 shadow-sm outline">
           <div className="h-[428px]">
             <div className="flex justify-between my-1 font-bold ">
               Notifications

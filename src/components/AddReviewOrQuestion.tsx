@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   review: boolean;
@@ -115,7 +116,7 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
         </div>
       )}
       <Button disabled={isPending} type="submit" className="w-30">
-        {review ? "Add Review" : "Ask Question"}
+        {isPending ? <Spinner /> : review ? "Add Review" : "Ask Question"}
       </Button>
     </form>
   );

@@ -2,7 +2,6 @@
 
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { Label } from "@radix-ui/react-label";
-import { Ellipsis } from "lucide-react";
 import React, { useTransition } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -15,6 +14,7 @@ import {
 } from "./ui/card";
 import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   token: string;
@@ -23,7 +23,7 @@ type Props = {
 };
 
 const ChangeAccount = ({ token, email, version }: Props) => {
-  const [isPending, startTransaction] = useTransition();
+  const [isPending, startTransitionn] = useTransition();
   const router = useRouter();
 
   const url =
@@ -49,14 +49,17 @@ const ChangeAccount = ({ token, email, version }: Props) => {
         "When you delete your account, your data will be permanently removed.";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    startTransaction(async () => {
+    startTransitionn(async () => {
       e.preventDefault();
 
       const formData = new FormData(e.currentTarget);
       const data = Object.fromEntries(formData.entries());
       const res = await apiFetchClient(`${url}`, {
         method: version == "delete" ? "DELETE" : "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(data),
       });
       (e.target as HTMLFormElement).reset();
@@ -149,7 +152,7 @@ const ChangeAccount = ({ token, email, version }: Props) => {
           disabled={isPending}
         >
           {isPending ? (
-            <Ellipsis />
+            <Spinner />
           ) : version == "delete" ? (
             <>Delete</>
           ) : (

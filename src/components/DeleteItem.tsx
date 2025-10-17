@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   url: string;
@@ -32,7 +33,7 @@ const DeleteItem = ({ url, token }: Props) => {
 
   return (
     <Button disabled={isPending} onClick={handleDelete}>
-      🗑
+      {isPending ? <Spinner /> : "🗑"}
     </Button>
   );
 };

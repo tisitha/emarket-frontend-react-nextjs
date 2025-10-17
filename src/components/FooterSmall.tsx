@@ -6,7 +6,7 @@ const FooterSmall = () => {
   return (
     <div className="bg-white flex justify-around items-center py-8 outline">
       <div>
-        <Link href={""}>
+        <Link href={"/"}>
           <div className="relative w-[140px] h-[140px]">
             <Image
               loading="lazy"

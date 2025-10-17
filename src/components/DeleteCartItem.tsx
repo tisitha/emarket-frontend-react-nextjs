@@ -4,6 +4,7 @@ import React, { useTransition } from "react";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   token: string;
@@ -34,7 +35,7 @@ const DeleteCartItem = ({ token, cartItemId }: Props) => {
       disabled={isPending}
       onClick={handleClick}
     >
-      remove
+      {isPending ? <Spinner /> : "remove"}
     </button>
   );
 };

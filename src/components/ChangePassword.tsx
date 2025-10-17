@@ -1,7 +1,6 @@
 "use client";
 
 import { Label } from "@radix-ui/react-label";
-import { Ellipsis } from "lucide-react";
 import React, { useTransition } from "react";
 import { Button } from "./ui/button";
 import {
@@ -14,16 +13,17 @@ import {
 import { Input } from "./ui/input";
 import { toast } from "sonner";
 import { apiFetchClient } from "@/lib/apiClient.client";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   token: string;
 };
 
 const ChangePassword = ({ token }: Props) => {
-  const [isPending, startTransaction] = useTransition();
+  const [isPending, startTransitionn] = useTransition();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    startTransaction(async () => {
+    startTransitionn(async () => {
       e.preventDefault();
 
       const formData = new FormData(e.currentTarget);
@@ -31,7 +31,10 @@ const ChangePassword = ({ token }: Props) => {
 
       const res = await apiFetchClient(`/user/password`, {
         method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(data),
       });
       if (res) {
@@ -95,7 +98,7 @@ const ChangePassword = ({ token }: Props) => {
           className="w-full hover:cursor-pointer"
           disabled={isPending}
         >
-          {isPending ? <Ellipsis /> : <>Save</>}
+          {isPending ? <Spinner /> : <>Save</>}
         </Button>
       </CardFooter>
     </form>

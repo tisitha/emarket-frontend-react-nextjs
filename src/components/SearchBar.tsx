@@ -1,20 +1,10 @@
 "use client";
 
+import { apiFetchClient } from "@/lib/apiClient.client";
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 
-type searchItemType = {
-  id: number;
-  name: string;
-  brand: string;
-  category: categoryType;
-};
-
-type categoryType = { name: string };
-
 const CommandSearchBar = () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
   const [toggleSearchContent, setToggleSearchContent] = useState(false);
 
   const checkFocus = () => {
@@ -27,18 +17,17 @@ const CommandSearchBar = () => {
     }, 300);
   };
 
-  const [searchList, setSearchList] = useState<searchItemType[]>([]);
+  const [searchList, setSearchList] = useState<productType[]>([]);
 
   const handleSearch = async (searchTerm: string) => {
     if (searchTerm.trim() != "") {
-      const response = await fetch(
-        `${apiUrl}/open/search/${searchTerm.trim()}/10`
+      const res = await apiFetchClient<productType[]>(
+        `/open/search/${searchTerm.trim()}/10`
       );
-      if (response.ok) {
-        const searchdata: searchItemType[] = await response.json();
-        setSearchList(searchdata);
-      } else {
-        console.error(response);
+      if (res) {
+        if (res != true) {
+          setSearchList(res);
+        }
       }
     } else {
       setSearchList([]);

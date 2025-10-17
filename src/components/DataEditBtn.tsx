@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   title: string;
@@ -54,7 +55,10 @@ const DataEditBtn = ({
       };
       const res = await apiFetchClient(`${baseUrl}`, {
         method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(data),
       });
       if (res) {
@@ -113,7 +117,7 @@ const DataEditBtn = ({
           className="mt-3 w-full"
           onClick={handleClick}
         >
-          Save
+          {isPending ? <Spinner /> : "Save"}
         </Button>
       </PopoverContent>
     </Popover>

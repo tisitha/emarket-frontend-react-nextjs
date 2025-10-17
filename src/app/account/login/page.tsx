@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Ellipsis } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
@@ -27,11 +27,11 @@ export default function LoginForm() {
       e.preventDefault();
 
       const formData = new FormData(e.currentTarget);
-      const json = Object.fromEntries(formData.entries());
+      const obj = Object.fromEntries(formData.entries());
 
       const res = await fetch("/api/login", {
         method: "POST",
-        body: JSON.stringify(json),
+        body: JSON.stringify(obj),
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -80,7 +80,7 @@ export default function LoginForm() {
                     required
                   />
                   <Link
-                    href={""}
+                    href={"/account/recovery/verifyaccount"}
                     className="inline-block text-sm underline-offset-4 hover:underline"
                   >
                     Forgot your password?
@@ -94,7 +94,7 @@ export default function LoginForm() {
                 className="w-full hover:cursor-pointer"
                 disabled={isPending}
               >
-                {isPending ? <Ellipsis /> : <>Login</>}
+                {isPending ? <Spinner /> : <>Login</>}
               </Button>
               <Button
                 type="button"

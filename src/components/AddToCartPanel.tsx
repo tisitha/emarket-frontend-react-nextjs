@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { Input } from "./ui/input";
 import { apiFetchClient } from "@/lib/apiClient.client";
-import { Ellipsis } from "lucide-react";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   productId: string;
@@ -27,7 +27,10 @@ const AddToCartPanel = ({ productId, stockQuantity, token }: Props) => {
       if (token) {
         const res = await apiFetchClient(`/cart`, {
           method: "POST",
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify(data),
           credentials: "include",
         });
@@ -86,7 +89,7 @@ const AddToCartPanel = ({ productId, stockQuantity, token }: Props) => {
         onClick={handleSubmit}
         className="mt-5 w-35 hover:cursor-pointer"
       >
-        {isPending ? <Ellipsis /> : <>Add to Cart</>}
+        {isPending ? <Spinner /> : <>Add to Cart</>}
       </Button>
     </div>
   );

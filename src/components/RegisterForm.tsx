@@ -13,8 +13,8 @@ import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useTransition } from "react";
-import { Ellipsis } from "lucide-react";
 import { apiFetchClient } from "@/lib/apiClient.client";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   provinces?: provinceType[];
@@ -22,7 +22,7 @@ type Props = {
 };
 
 const RegisterForm = ({ provinces = [], vendor }: Props) => {
-  const [isPending, startTransaction] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const router = useRouter();
 
@@ -31,7 +31,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    startTransaction(async () => {
+    startTransition(async () => {
       e.preventDefault();
       const formData = new FormData(e.currentTarget);
 
@@ -45,6 +45,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
       const url = vendor ? "/auth/register-vendor" : "/auth/register-user";
 
       const res = await apiFetchClient(`${url}`, {
+        headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify(data),
       });
@@ -203,7 +204,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
           type="submit"
           className="w-full hover:cursor-pointer"
         >
-          {isPending ? <Ellipsis /> : <>Register</>}
+          {isPending ? <Spinner /> : <>Register</>}
         </Button>
         <Button
           type="button"

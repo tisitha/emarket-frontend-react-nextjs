@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "./ui/button";
 import { apiFetchClient } from "@/lib/apiClient.client";
 import { useRouter } from "next/navigation";
+import { Spinner } from "./ui/spinner";
 
 type Props = {
   paymentMethods?: paymentMethodType[];
@@ -36,7 +37,10 @@ const CheckOut = ({ paymentMethods = [], token, cod, disabled }: Props) => {
       };
       const res = await apiFetchClient(`/order`, {
         method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(orderRequest),
         credentials: "include",
       });
@@ -78,7 +82,7 @@ const CheckOut = ({ paymentMethods = [], token, cod, disabled }: Props) => {
         onClick={handleSubmit}
         disabled={disabled || isPending}
       >
-        Checkout
+        {isPending ? <Spinner /> : "Checkout"}
       </Button>
     </div>
   );

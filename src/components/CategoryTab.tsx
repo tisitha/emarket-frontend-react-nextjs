@@ -20,7 +20,7 @@ const CategoryTab = async () => {
           categories.map((category, key) => (
             <Link
               href={`/products?category=${category.id}`}
-              className="rounded-4xl p-1 pl-3 pr-3 font-medium bg-white outline-1"
+              className="rounded-2xl p-1 pl-3 pr-3 font-medium bg-white outline-1"
               key={key}
             >
               {category.name}
