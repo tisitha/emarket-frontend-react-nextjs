@@ -2,7 +2,6 @@
 
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import Image from "next/image";
 
 type carouselType = {
   id: number;
@@ -10,19 +9,11 @@ type carouselType = {
   name: string;
 };
 
-const initialCarousel: carouselType[] = [
-  {
-    id: 1,
-    imgUrl: "/carousel_placeholder.jpg",
-    name: "placeholer_carousel",
-  },
-];
-
 type Props = {
-  carousels?: carouselType[];
+  carousels: carouselType[];
 };
 
-const Sweeper = ({ carousels = initialCarousel }: Props) => {
+const Sweeper = ({ carousels }: Props) => {
   return (
     <Carousel
       opts={{
@@ -35,12 +26,9 @@ const Sweeper = ({ carousels = initialCarousel }: Props) => {
       ]}
     >
       <CarouselContent>
-        {carousels.map((carousel: carouselType, key: number) => (
-          <CarouselItem
-            key={key}
-            className="max-w-[1920px] relative w-full px-0 "
-          >
-            <Image src={carousel.imgUrl} fill unoptimized alt={carousel.name} />
+        {carousels?.map((c, i) => (
+          <CarouselItem key={i} className="bg-black px-0">
+            <img alt={c.name} src={c.imgUrl} />
           </CarouselItem>
         ))}
       </CarouselContent>
