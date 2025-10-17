@@ -66,12 +66,12 @@ const CheckOut = ({ paymentMethods = [], token, cod, disabled }: Props) => {
           <option disabled>Select</option>
           {cod
             ? paymentMethods?.map((p, i) => (
-                <option key={i} value={p.id}>
+                <option key={i} value={p.id} id={`pmo${i}`}>
                   {p.name}
                 </option>
               ))
             : paymentMethodswithOutCod?.map((p, i) => (
-                <option key={i} value={p.id}>
+                <option key={i} value={p.id} id={`pmo${i}`}>
                   {p.name}
                 </option>
               ))}

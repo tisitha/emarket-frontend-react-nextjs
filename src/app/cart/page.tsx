@@ -6,6 +6,7 @@ import { apiFetch } from "@/lib/apiClient.server";
 import { Package, ShoppingCart } from "lucide-react";
 import { cookies } from "next/headers";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -49,17 +50,30 @@ const page = async () => {
                           <div className="flex items-center gap-3 max-w-[450px]">
                             <div className="avatar">
                               <div className="h-12 w-12">
-                                <Image
-                                  unoptimized
-                                  width={50}
-                                  height={50}
-                                  src={c.product.imgUrl}
-                                  alt={c.product.name}
-                                />
+                                <Link href={`/product?id=${c.product.id}`}>
+                                  <Image
+                                    unoptimized
+                                    width={50}
+                                    height={50}
+                                    src={c.product.imgUrl}
+                                    alt={c.product.name}
+                                    className="rounded-sm"
+                                  />
+                                </Link>
                               </div>
                             </div>
                             <div>
-                              <div className="font-bold">{c.product.name}</div>
+                              <Link href={`/product?id=${c.product.id}`}>
+                                <div className="font-bold">
+                                  {c.product.name}
+                                </div>
+                              </Link>
+                              <Link
+                                href={`/products?vendor=${c.product.vendorProfile.id}`}
+                                className="text-sm text-gray-700"
+                              >
+                                from: {c.product.vendorProfile.businessName}
+                              </Link>
                               {c.product.deal ? (
                                 <>
                                   <div className="text-sm opacity-50">
