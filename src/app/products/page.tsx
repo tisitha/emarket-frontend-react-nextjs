@@ -7,12 +7,6 @@ import SortByButton from "@/components/SortByButton";
 import { apiFetch } from "@/lib/apiClient.server";
 import Link from "next/link";
 import React from "react";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { ChevronsUpDown } from "lucide-react";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -144,15 +138,15 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
       <Header />
       <div className=" bg-gray-100 flex justify-center">
         <div className="flex flex-col items-center max-w-[1360px] w-full">
-          <div className="flex px-20 py-3 w-full">
-            <div className="dropdown">
+          <div className="flex w-full">
+            <div className="dropdown not-md:w-full md:px-20 md:py-3">
               <div
                 tabIndex={0}
-                className="m-1 font-bold text-white hover:cursor-pointer outline rounded-2xl p-2 bg-blue-950 hover:bg-gray-700 active:bg-gray-700"
+                className="font-bold text-white hover:cursor-pointer outline md:rounded-2xl p-2  bg-blue-950 hover:bg-gray-700 active:bg-gray-700"
               >
                 Categories ▾
               </div>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+              <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm not-md:w-3/4">
                 {rootCategories?.map((c, i) => (
                   <li key={i}>
                     <Link href={`/products?category=${c.id}`}>{c.name}</Link>
@@ -161,36 +155,32 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
               </ul>
             </div>
           </div>
-          <div className="flex max-w-[1360px] w-full not-md:flex-wrap">
-            <div className="max-w-[400px] w-full pl-30 pr-15 ">
-              {vendor && vendor != "null" ? (
-                <div className="font-semibold">
-                  {
-                    products?.productResponseDtoList[0]?.vendorProfile
-                      .businessName
-                  }
-                </div>
-              ) : (
-                <>
-                  <div className="font-semibold">Sub Categories</div>
-                  {categories &&
-                    categories.map((c, i) => (
-                      <Link
-                        className="text-gray-700 hover:text-shadow-blue-600 hover:text-black"
-                        key={i}
-                        href={`/products?category=${c.id}`}
-                      >
-                        {c.name}
-                      </Link>
-                    ))}
-                </>
-              )}
-              <Collapsible className="mt-5 md:hidden">
-                <CollapsibleTrigger className="bg-gray-300 rounded-2xl hover:bg-white active:bg-white p-2 flex hover:cursor-pointer">
-                  <span>Filters&nbsp;</span>
-                  <ChevronsUpDown />
-                </CollapsibleTrigger>
-                <CollapsibleContent>
+          <div className="flex max-w-[1360px] w-full not-md:flex-wrap ">
+            <div className="max-w-[400px] w-full flex mx-auto">
+              <div className="mx-auto mt-4 max-w-[355px] w-full">
+                {vendor && vendor != "null" ? (
+                  <div className="mx-auto max-w-[240px] w-full font-semibold">
+                    {
+                      products?.productResponseDtoList[0]?.vendorProfile
+                        .businessName
+                    }
+                  </div>
+                ) : (
+                  <div className="mx-auto max-w-[240px] w-full">
+                    <div className="text-gray-800">Category</div>
+                    {categories &&
+                      categories.map((c, i) => (
+                        <Link
+                          className="text-gray-700 hover:text-shadow-blue-600 hover:text-black"
+                          key={i}
+                          href={`/products?category=${c.id}`}
+                        >
+                          {c.name}
+                        </Link>
+                      ))}
+                  </div>
+                )}
+                <div className="mx-auto">
                   <FilterTab
                     provinces={provinces}
                     warranties={warranties}
@@ -200,21 +190,10 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
                     sortBy={String(sortBy)}
                     dir={String(dir)}
                   />
-                </CollapsibleContent>
-              </Collapsible>
-              <div className="hidden md:block">
-                <FilterTab
-                  provinces={provinces}
-                  warranties={warranties}
-                  currentCategory={category ? String(category) : null}
-                  currentVendor={vendor ? String(vendor) : null}
-                  pagenumber={Number(pagenumber)}
-                  sortBy={String(sortBy)}
-                  dir={String(dir)}
-                />
+                </div>
               </div>
             </div>
-            <div className="max-w-[900px] w-full">
+            <div className="flex flex-col max-w-[900px] w-full">
               <div className="flex justify-end pr-40 pb-10">
                 <SortByButton options={reviewSortOptions} id={"productSort"} />
               </div>

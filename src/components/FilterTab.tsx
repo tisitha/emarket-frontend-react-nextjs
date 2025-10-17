@@ -107,7 +107,7 @@ const FilterTab = ({
   };
 
   return (
-    <div className="max-w-[310px] w-full flex flex-col gap-2 pb-10 mt-5">
+    <div className="max-w-[240px] w-full flex flex-col gap-2 pb-10 mt-5 mx-auto ">
       <hr />
       <Link
         className="pb-2"
@@ -119,6 +119,7 @@ const FilterTab = ({
         <div className="font-semibold">Price</div>
         <div className="flex"></div>
         <Input
+          id="minPrice"
           placeholder="Min"
           onChange={handleMinPriceChange}
           value={minPrice ? minPrice : ""}
@@ -129,6 +130,7 @@ const FilterTab = ({
         />
         -
         <Input
+          id="maxPrice"
           placeholder="Max"
           onChange={handleMaxPriceChange}
           value={maxPrice ? maxPrice : ""}
@@ -142,6 +144,7 @@ const FilterTab = ({
       <div className="flex gap-6">
         <Checkbox
           id="stock"
+          name="stock"
           checked={stock}
           onCheckedChange={handleStockChange}
           className="hover:cursor-pointer hover:bg-white"
@@ -156,6 +159,7 @@ const FilterTab = ({
       <div className="flex gap-6">
         <Checkbox
           id="freedelivery"
+          name="freedelivery"
           checked={freeDelivery}
           onCheckedChange={handleFreeDeliveryChange}
           className="hover:cursor-pointer hover:bg-white"
@@ -170,6 +174,7 @@ const FilterTab = ({
       <div className="flex gap-6">
         <Checkbox
           id="cod"
+          name="cod"
           checked={cod}
           onCheckedChange={handleCodChange}
           className="hover:cursor-pointer hover:bg-white"
@@ -188,6 +193,7 @@ const FilterTab = ({
           <div key={i} className="flex gap-6">
             <Checkbox
               id={`province${i}`}
+              name={`province${i}`}
               onCheckedChange={(e) => handleProvinceChange(p.id, e)}
               className="hover:cursor-pointer hover:bg-white"
             />
@@ -207,6 +213,7 @@ const FilterTab = ({
           <div key={i} className="flex gap-6">
             <Checkbox
               id={`warranty${i}`}
+              name={`warranty${i}`}
               onCheckedChange={(e) => handleWarrantyChange(w.id, e)}
               className="hover:cursor-pointer hover:bg-white"
             />
