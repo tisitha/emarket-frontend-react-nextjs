@@ -3,7 +3,7 @@ import Logout from "./Logout";
 
 const UserDropdownMenu = ({ name }: { name: string }) => {
   return (
-    <div className="dropdown">
+    <div className="dropdown dropdown-center">
       <div tabIndex={0} className="btn leading-none rounded-3xl">
         Hello {name}
       </div>
