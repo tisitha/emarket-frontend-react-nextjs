@@ -35,7 +35,7 @@ const Settings = async () => {
                 type="radio"
                 name="my_tabs_6"
                 className="tab"
-                aria-label="Profile"
+                aria-label="&nbsp;Profile&nbsp;"
                 defaultChecked
               />
               <div className="tab-content bg-base-100 border-base-300 p-6">
@@ -46,7 +46,7 @@ const Settings = async () => {
                 type="radio"
                 name="my_tabs_6"
                 className="tab"
-                aria-label="Change password"
+                aria-label="&nbsp;Change password&nbsp;"
               />
               <div className="tab-content bg-base-100 border-base-300 p-6">
                 <div className="max-w-[400px] w-full mx-auto bg-white py-7">
@@ -59,7 +59,7 @@ const Settings = async () => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Switch to user account"
+                    aria-label="&nbsp;Switch to user account&nbsp;"
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
                     <div className="max-w-[400px] w-full mx-auto bg-white py-7">
@@ -77,7 +77,7 @@ const Settings = async () => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Switch to vendor account"
+                    aria-label="&nbsp;Switch to vendor account&nbsp;"
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
                     <div className="max-w-[400px] w-full mx-auto bg-white py-7">
@@ -94,7 +94,7 @@ const Settings = async () => {
                 type="radio"
                 name="my_tabs_6"
                 className="tab"
-                aria-label="Delete account"
+                aria-label="&nbsp;Delete account&nbsp;"
               />
               <div className="tab-content bg-base-100 border-base-300 p-6">
                 <div className="max-w-[400px] w-full mx-auto bg-white py-7">

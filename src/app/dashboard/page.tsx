@@ -82,7 +82,7 @@ const Dashboard = async ({ searchParams }: Props) => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Products"
+                    aria-label="&nbsp;Products&nbsp;"
                     defaultChecked
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
@@ -101,7 +101,7 @@ const Dashboard = async ({ searchParams }: Props) => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Questions"
+                    aria-label="&nbsp;Questions&nbsp;"
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
                     <Questions token={token} />
@@ -110,7 +110,7 @@ const Dashboard = async ({ searchParams }: Props) => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Orders"
+                    aria-label="&nbsp;Orders&nbsp;"
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
                     <Orders
@@ -125,7 +125,7 @@ const Dashboard = async ({ searchParams }: Props) => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Buying History"
+                    aria-label="&nbsp;Buying History&nbsp;"
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
                     <Orders
@@ -143,7 +143,7 @@ const Dashboard = async ({ searchParams }: Props) => {
                     type="radio"
                     name="my_tabs_6"
                     className="tab"
-                    aria-label="Orders"
+                    aria-label="&nbsp;Orders&nbsp;"
                     defaultChecked
                   />
                   <div className="tab-content bg-base-100 border-base-300 p-6">
