@@ -11,13 +11,16 @@ const ProductCard = ({ cardDetail }: Props) => {
       href={`/product?id=${cardDetail.id}`}
       className="h-[350px] w-[175px] hover:shadow-2xl rounded-2xl flex flex-col justify-between bg-white"
     >
-      <div className="relative h-[175px] w-[175px]  rounded-2xl ">
+      <div className="relative h-[175px] w-[175px] bg-white rounded-2xl ">
         <Image
           alt={cardDetail.name}
           src={cardDetail.imgUrl}
           fill
-          unoptimized
-          style={{ objectFit: "cover" }}
+          style={{
+            objectFit: "contain",
+            maxWidth: "100%",
+            maxHeight: "100%",
+          }}
           className=" rounded-2xl "
         />
       </div>

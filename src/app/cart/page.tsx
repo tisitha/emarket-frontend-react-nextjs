@@ -60,12 +60,16 @@ const Cart = async () => {
                                   aria-label="Product"
                                 >
                                   <Image
-                                    unoptimized
                                     width={50}
                                     height={50}
                                     src={c.product.imgUrl}
                                     alt={c.product.name}
                                     className="rounded-sm"
+                                    style={{
+                                      objectFit: "contain",
+                                      maxWidth: "100%",
+                                      maxHeight: "100%",
+                                    }}
                                   />
                                 </Link>
                               </div>

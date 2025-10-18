@@ -124,10 +124,14 @@ const Product = async ({ searchParams }: Props) => {
               <Image
                 width={340}
                 height={340}
-                unoptimized
                 src={product.imgUrl}
                 alt={product.name}
                 className=" rounded-4xl"
+                style={{
+                  objectFit: "contain",
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                }}
               />
             </div>
             <div className="mx-auto max-w-[520px] w-full items-center md:items-start flex flex-col gap-6 p-10">
@@ -202,7 +206,7 @@ const Product = async ({ searchParams }: Props) => {
               <div>From: {product.province.name}</div>
             </div>
           </div>
-          <div className="flex max-w-[1200px] w-full mx-auto">
+          <div className="flex max-w-[1200px] w-full mx-auto my-2">
             {product.description}
           </div>
           <div className="flex max-w-[1200px] w-full flex-col border-t-2 mt-10 mx-auto">

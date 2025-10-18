@@ -2,6 +2,7 @@
 
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 
 type carouselType = {
   id: number;
@@ -28,7 +29,17 @@ const Sweeper = ({ carousels }: Props) => {
       <CarouselContent>
         {carousels?.map((c, i) => (
           <CarouselItem key={i} className="bg-black px-0">
-            <img alt={c.name} src={c.imgUrl} />
+            <Image
+              src={c.imgUrl}
+              width={1920}
+              height={660}
+              alt={c.name}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>

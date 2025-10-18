@@ -117,7 +117,11 @@ const VendorProducts = async ({
                       width={20}
                       src={p.imgUrl}
                       alt={p.name}
-                      unoptimized
+                      style={{
+                        objectFit: "contain",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                      }}
                     />
                   </TableCell>
                   <TableCell>{p.name}</TableCell>

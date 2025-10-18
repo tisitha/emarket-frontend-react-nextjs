@@ -249,7 +249,7 @@ const AddProduct = ({
                     onChange={handleSelectFile}
                     type="file"
                     className="file-input"
-                    accept="image/jpeg, image/png"
+                    accept="image/jpeg, image/png, image/webp"
                   />
                 </div>
               </div>
