@@ -81,6 +81,7 @@ const CheckOut = ({ paymentMethods = [], token, cod, disabled }: Props) => {
         className="w-full mt-5 hover:cursor-pointer"
         onClick={handleSubmit}
         disabled={disabled || isPending}
+        aria-label="Submit"
       >
         {isPending ? <Spinner /> : "Checkout"}
       </Button>

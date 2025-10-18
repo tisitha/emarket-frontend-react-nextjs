@@ -5,6 +5,11 @@ import { apiFetch } from "@/lib/apiClient.server";
 import { SearchIcon } from "lucide-react";
 import React from "react";
 
+export const metadata = {
+  title: "Catalog - EMarket",
+  description: "Search catalog.",
+};
+
 type Props = {
   searchParams: Promise<{ [key: string]: string }>;
 };

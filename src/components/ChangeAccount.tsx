@@ -150,6 +150,7 @@ const ChangeAccount = ({ token, email, version }: Props) => {
           type="submit"
           className="w-full hover:cursor-pointer"
           disabled={isPending}
+          aria-label="submit"
         >
           {isPending ? (
             <Spinner />

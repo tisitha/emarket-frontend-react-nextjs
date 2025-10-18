@@ -3,6 +3,11 @@ import RegisterForm from "@/components/RegisterForm";
 import { apiFetch } from "@/lib/apiClient.server";
 import React from "react";
 
+export const metadata = {
+  title: "Register - EMarket",
+  description: "User register.",
+};
+
 type provinceType = {
   id: number;
   name: string;

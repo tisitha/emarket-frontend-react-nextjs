@@ -6,16 +6,8 @@ const FooterSmall = () => {
   return (
     <div className="bg-white flex justify-around items-center py-8 outline">
       <div>
-        <Link href={"/"}>
-          <div className="relative w-[140px] h-[140px]">
-            <Image
-              loading="lazy"
-              fill
-              sizes="auto"
-              src="/emarketLogo-l.svg"
-              alt="endlogo"
-            />
-          </div>
+        <Link href={"/"} aria-label="Home">
+          <div className="font-extrabold text-3xl">EMARKET</div>
         </Link>
         <h3>©2025. All Rights Reserved</h3>
       </div>
@@ -24,6 +16,7 @@ const FooterSmall = () => {
           href="https://www.facebook.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Facebook"
         >
           <Image
             width={32}
@@ -37,6 +30,7 @@ const FooterSmall = () => {
           href="https://www.instagram.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram"
         >
           <Image
             width={32}
@@ -50,6 +44,7 @@ const FooterSmall = () => {
           href="https://www.linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Linkendin"
         >
           <Image
             width={32}
@@ -59,7 +54,12 @@ const FooterSmall = () => {
             alt="vist our linkedin page"
           />
         </Link>
-        <Link href="https://x.com" target="_blank" rel="noopener noreferrer">
+        <Link
+          href="https://x.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X"
+        >
           <Image
             width={32}
             height={32}
@@ -72,6 +72,7 @@ const FooterSmall = () => {
           href="https://www.youtube.com"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Youtube"
         >
           <Image
             width={32}

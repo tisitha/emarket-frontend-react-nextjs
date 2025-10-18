@@ -11,6 +11,11 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 };
 
+export const metadata = {
+  title: "Dashboard - EMarket",
+  description: "User Dashboard.",
+};
+
 const page = async ({ searchParams }: Props) => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;

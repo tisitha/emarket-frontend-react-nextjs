@@ -115,7 +115,12 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
           />
         </div>
       )}
-      <Button disabled={isPending} type="submit" className="w-30">
+      <Button
+        disabled={isPending}
+        type="submit"
+        className="w-30"
+        aria-label="submit"
+      >
         {isPending ? <Spinner /> : review ? "Add Review" : "Ask Question"}
       </Button>
     </form>

@@ -93,6 +93,7 @@ export default function LoginForm() {
                 type="submit"
                 className="w-full hover:cursor-pointer"
                 disabled={isPending}
+                aria-label="Login"
               >
                 {isPending ? <Spinner /> : <>Login</>}
               </Button>
@@ -100,6 +101,7 @@ export default function LoginForm() {
                 type="button"
                 variant="outline"
                 className="w-full hover:cursor-pointer mt-3"
+                asChild
               >
                 <Link href={"/account/register"}>Create new account</Link>
               </Button>

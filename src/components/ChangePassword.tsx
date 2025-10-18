@@ -97,6 +97,7 @@ const ChangePassword = ({ token }: Props) => {
           type="submit"
           className="w-full hover:cursor-pointer"
           disabled={isPending}
+          aria-label="Submit"
         >
           {isPending ? <Spinner /> : <>Save</>}
         </Button>

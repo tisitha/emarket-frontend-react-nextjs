@@ -17,6 +17,7 @@ const ProductCard = ({ cardDetail }: Props) => {
           src={cardDetail.imgUrl}
           fill
           unoptimized
+          style={{ objectFit: "cover" }}
           className=" rounded-2xl "
         />
       </div>

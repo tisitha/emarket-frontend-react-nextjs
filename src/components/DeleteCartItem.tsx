@@ -34,6 +34,7 @@ const DeleteCartItem = ({ token, cartItemId }: Props) => {
       className="block text-sm hover:text-gray-600 hover:cursor-pointer p-1"
       disabled={isPending}
       onClick={handleClick}
+      aria-label="Remove"
     >
       {isPending ? <Spinner /> : "remove"}
     </button>

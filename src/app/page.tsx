@@ -11,6 +11,11 @@ type carouseType = {
   name: string;
 };
 
+export const metadata = {
+  title: "EMarket",
+  description: "Welcome to Emarket.",
+};
+
 export default async function Home() {
   const carousels = await apiFetch<carouseType[]>(`/open/carousel`);
 

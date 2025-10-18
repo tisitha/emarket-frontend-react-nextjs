@@ -259,6 +259,7 @@ const AddProduct = ({
                 disabled={isPending}
                 type="submit"
                 className="w-full hover:cursor-pointer"
+                aria-label="Save"
               >
                 {isPending ? <Spinner /> : <>Save</>}
               </Button>

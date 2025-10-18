@@ -74,7 +74,7 @@ const AnswerQuestion = ({ questionId, question, token }: Props) => {
           className="bg-white max-w-200 w-full h-30 outline rounded-2xl p-2"
           onChange={handleChange}
         />
-        <Button disabled={isPending} onClick={handleClick}>
+        <Button disabled={isPending} onClick={handleClick} aria-label="Answer">
           {isPending ? <Spinner /> : "Answer"}
         </Button>
         <DialogClose asChild>

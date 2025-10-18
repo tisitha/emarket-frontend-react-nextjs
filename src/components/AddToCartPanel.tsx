@@ -88,6 +88,7 @@ const AddToCartPanel = ({ productId, stockQuantity, token }: Props) => {
         disabled={isPending}
         onClick={handleSubmit}
         className="mt-5 w-35 hover:cursor-pointer"
+        aria-label="Add"
       >
         {isPending ? <Spinner /> : <>Add to Cart</>}
       </Button>

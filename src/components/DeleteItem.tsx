@@ -32,7 +32,7 @@ const DeleteItem = ({ url, token }: Props) => {
   };
 
   return (
-    <Button disabled={isPending} onClick={handleDelete}>
+    <Button disabled={isPending} onClick={handleDelete} aria-label="Delete">
       {isPending ? <Spinner /> : "🗑"}
     </Button>
   );

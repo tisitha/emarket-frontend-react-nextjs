@@ -17,6 +17,11 @@ import { useRouter } from "next/navigation";
 import React, { useState, useTransition } from "react";
 import { toast } from "sonner";
 
+export const metadata = {
+  title: "Recovery - EMarket",
+  description: "Recovery page.",
+};
+
 const page = () => {
   const [isPending, startTransitionn] = useTransition();
   const [email, setEmail] = useState("");
@@ -70,6 +75,7 @@ const page = () => {
               className="w-full hover:cursor-pointer"
               disabled={isPending}
               onClick={handleClick}
+              aria-label="Submit"
             >
               {isPending ? <Spinner /> : <>Submit</>}
             </Button>
@@ -77,6 +83,7 @@ const page = () => {
               variant="outline"
               className="w-full hover:cursor-pointer"
               asChild
+              aria-label="Cancel"
             >
               <Link href={"/account/login"}>Cancel</Link>
             </Button>

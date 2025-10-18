@@ -109,12 +109,13 @@ const FilterTab = ({
   return (
     <div className="max-w-[240px] w-full flex flex-col gap-2 pb-10 mt-5 mx-auto ">
       <hr />
-      <Link
-        className="pb-2"
-        href={`/products?pagenumber=${pagenumber}&sortBy=${sortBy}&dir=${dir}&category=${currentCategory}&freedelivery=${freeDelivery}&cod=${cod}&province=${province}&warranty=${warranty}&vendor=${currentVendor}&minprice=${minPrice}&maxprice=${maxPrice}&stockonly=${stock}`}
-      >
-        <Button className="w-full hover:cursor-pointer">Apply Filter</Button>
-      </Link>
+      <Button className="w-full hover:cursor-pointer mb-2" asChild>
+        <Link
+          href={`/products?pagenumber=${pagenumber}&sortBy=${sortBy}&dir=${dir}&category=${currentCategory}&freedelivery=${freeDelivery}&cod=${cod}&province=${province}&warranty=${warranty}&vendor=${currentVendor}&minprice=${minPrice}&maxprice=${maxPrice}&stockonly=${stock}`}
+        >
+          Apply Filter
+        </Link>
+      </Button>
       <div>
         <div className="font-semibold">Price</div>
         <div className="flex"></div>

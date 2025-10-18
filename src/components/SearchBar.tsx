@@ -64,7 +64,10 @@ const CommandSearchBar = () => {
           onKeyDown={handleKeyDown}
           placeholder="What are you looking for..."
         />
-        <Link href={text != "" ? `/catalog?text=${text.trim()}` : "#"}>
+        <Link
+          href={text != "" ? `/catalog?text=${text.trim()}` : "#"}
+          aria-label="Search"
+        >
           <SearchIcon className="p-2 opacity-80 hover:cursor-pointer h-9 w-9 right-0" />
         </Link>
       </div>

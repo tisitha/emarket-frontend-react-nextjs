@@ -8,6 +8,11 @@ import { apiFetch } from "@/lib/apiClient.server";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "Products - EMarket",
+  description: "Products catalog.",
+};
+
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };

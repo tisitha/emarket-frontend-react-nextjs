@@ -116,6 +116,7 @@ const DataEditBtn = ({
           disabled={isPending}
           className="mt-3 w-full"
           onClick={handleClick}
+          aria-label="Save"
         >
           {isPending ? <Spinner /> : "Save"}
         </Button>

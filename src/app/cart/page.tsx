@@ -10,6 +10,11 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 
+export const metadata = {
+  title: "Cart - EMarket",
+  description: "User cart.",
+};
+
 const page = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
@@ -50,7 +55,10 @@ const page = async () => {
                           <div className="flex items-center gap-3 max-w-[450px]">
                             <div className="avatar">
                               <div className="h-12 w-12">
-                                <Link href={`/product?id=${c.product.id}`}>
+                                <Link
+                                  href={`/product?id=${c.product.id}`}
+                                  aria-label="Product"
+                                >
                                   <Image
                                     unoptimized
                                     width={50}
@@ -63,7 +71,10 @@ const page = async () => {
                               </div>
                             </div>
                             <div>
-                              <Link href={`/product?id=${c.product.id}`}>
+                              <Link
+                                href={`/product?id=${c.product.id}`}
+                                aria-label="Product"
+                              >
                                 <div className="font-bold">
                                   {c.product.name}
                                 </div>
@@ -71,6 +82,7 @@ const page = async () => {
                               <Link
                                 href={`/products?vendor=${c.product.vendorProfile.id}`}
                                 className="text-sm text-gray-700"
+                                aria-label="Vendor"
                               >
                                 from: {c.product.vendorProfile.businessName}
                               </Link>

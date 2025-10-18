@@ -6,12 +6,6 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import { ScrollArea } from "./ui/scroll-area";
 import { apiFetchClient } from "@/lib/apiClient.client";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Label } from "@radix-ui/react-label";
-import { title } from "process";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Spinner } from "./ui/spinner";
 import {
   Dialog,
   DialogContent,
@@ -96,7 +90,11 @@ const Notification = ({ userToken }: { userToken?: string }) => {
   return (
     <div>
       <div className="hidden md:block dropdown dropdown-center md:dropdown-end">
-        <div tabIndex={0} className="hover:cursor-pointer mt-1">
+        <div
+          tabIndex={0}
+          className="hover:cursor-pointer mt-1"
+          aria-label="notification"
+        >
           {notificationData?.newNotificationCount > 0 && (
             <div className="absolute left-3 bottom-3 rounded-4xl w-5 h-5 text-white flex justify-center items-center bg-red-600">
               {notificationData?.newNotificationCount}
@@ -166,7 +164,7 @@ const Notification = ({ userToken }: { userToken?: string }) => {
       </div>
       <div className="md:hidden">
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger aria-label="notification">
             <div className="indicator hover:cursor-pointer mt-2">
               {notificationData?.newNotificationCount > 0 && (
                 <span className="indicator-item badge badge-primary rounded-4xl  w-5 h-5 text-center bg-red-600">

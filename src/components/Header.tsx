@@ -11,19 +11,13 @@ import Notification from "./Notification";
 const Header = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const role = cookieStore.get("user_role")?.value;
   const name = cookieStore.get("user_name")?.value;
 
   return (
     <div className="flex flex-col flex-1 w-full h-30 items-center justify-center bg-black">
       <div className="flex max-w-[1360px] w-full items-center font-bold gap-6 justify-evenly p-2">
-        <Link href={"/"}>
-          <Image
-            src={Logo}
-            alt="/emarketLogo-l.svg"
-            height={25}
-            className="select-none"
-          />
+        <Link href={"/"} aria-label="Home">
+          <Image src={Logo} alt="Logo" height={25} className="select-none" />
         </Link>
         <div className="not-md:hidden w-full max-w-150">
           <SearchBar />
@@ -45,7 +39,7 @@ const Header = async () => {
         {token && (
           <>
             <Notification userToken={token} />
-            <Link href={"/cart"}>
+            <Link href={"/cart"} aria-label="Cart">
               <ShoppingCart color="white" />
             </Link>
           </>

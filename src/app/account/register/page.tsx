@@ -4,6 +4,11 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+export const metadata = {
+  title: "Register - EMarket",
+  description: "Vendor register.",
+};
+
 const RegisterPage = async () => {
   return (
     <div className="h-screen flex flex-col">
@@ -40,11 +45,13 @@ const RegisterPage = async () => {
         >
           Already have an account?
         </Link>
-        <Link href={"/"}>
-          <Button variant="outline" className="w-100 hover:cursor-pointer">
-            Go Home
-          </Button>
-        </Link>
+        <Button
+          variant="outline"
+          className="w-100 hover:cursor-pointer"
+          asChild
+        >
+          <Link href={"/"}>Go Home</Link>
+        </Button>
       </div>
 
       <FooterSmall />

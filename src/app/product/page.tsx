@@ -13,6 +13,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
+export const metadata = {
+  title: "Product - EMarket",
+  description: "Product page.",
+};
+
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };

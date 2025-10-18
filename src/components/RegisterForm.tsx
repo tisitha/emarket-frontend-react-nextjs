@@ -203,6 +203,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
           disabled={isPending}
           type="submit"
           className="w-full hover:cursor-pointer"
+          aria-label="Register"
         >
           {isPending ? <Spinner /> : <>Register</>}
         </Button>

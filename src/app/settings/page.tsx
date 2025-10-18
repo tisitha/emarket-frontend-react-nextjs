@@ -7,6 +7,11 @@ import Profile from "@/components/Profile";
 import ChangePassword from "@/components/ChangePassword";
 import ChangeAccount from "@/components/ChangeAccount";
 
+export const metadata = {
+  title: "Settings - EMarket",
+  description: "Settings page.",
+};
+
 const page = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
