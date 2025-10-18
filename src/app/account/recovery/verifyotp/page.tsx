@@ -23,11 +23,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 
-export const metadata = {
-  title: "Recovery - EMarket",
-  description: "Recovery page.",
-};
-
 const page = () => {
   const [isPending, startTransitionn] = useTransition();
   const [otp, setOtp] = useState<number>();
