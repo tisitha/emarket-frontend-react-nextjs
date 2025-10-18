@@ -10,8 +10,8 @@ const VendorRegisterPage = async () => {
   });
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className="flex flex-grow justify-center items-center  my-16">
+    <div className="flex h-dvh flex-col">
+      <div className="flex justify-center items-center my-16 max-h-dvh h-full">
         <div className="w-100">
           <RegisterForm provinces={provinces} vendor={true} />
         </div>

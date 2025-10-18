@@ -43,8 +43,8 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className="flex flex-grow justify-center items-center">
+    <div className="flex h-dvh flex-col">
+      <div className="flex justify-center items-center max-h-dvh h-full">
         <div className="w-100">
           <form onSubmit={handleLogin}>
             <CardHeader>

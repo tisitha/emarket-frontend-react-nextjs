@@ -11,11 +11,11 @@ export const metadata = {
 
 const RegisterPage = async () => {
   return (
-    <div className="h-screen flex flex-col">
-      <div className="flex flex-grow flex-col justify-center items-center my-16">
-        <div className="w-200 flex justify-center gap-5">
+    <div className="flex h-dvh flex-col">
+      <div className="flex flex-col justify-center items-center max-h-dvh h-full">
+        <div className="max-w-200 w-full flex justify-center p-3 gap-5">
           <Link href={"/account/register/user"}>
-            <div className="outline w-50 h-50 rounded-3xl flex flex-col justify-center items-center gap-5 font-medium hover:shadow-2xl">
+            <div className="outline p-10 text-center max-w-50 max-h-50 w-full h-full rounded-3xl flex flex-col justify-center items-center gap-5 font-medium hover:shadow-2xl">
               <Image
                 draggable={false}
                 width={50}
@@ -27,7 +27,7 @@ const RegisterPage = async () => {
             </div>
           </Link>
           <Link href={"/account/register/vendor"}>
-            <div className="outline w-50 h-50 rounded-3xl flex flex-col justify-center items-center gap-5 font-medium hover:shadow-2xl">
+            <div className="outline p-10 text-center max-w-50 max-h-50 w-full h-full rounded-3xl flex flex-col justify-center items-center gap-5 font-medium hover:shadow-2xl">
               <Image
                 draggable={false}
                 width={50}
@@ -53,7 +53,6 @@ const RegisterPage = async () => {
           <Link href={"/"}>Go Home</Link>
         </Button>
       </div>
-
       <FooterSmall />
     </div>
   );

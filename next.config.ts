@@ -3,7 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     dangerouslyAllowSVG: true,
-    domains: ["vkfoqofwqjtogkypgrxx.supabase.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "vkfoqofwqjtogkypgrxx.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/Emarket-files/**",
+      },
+    ],
   },
 };
 

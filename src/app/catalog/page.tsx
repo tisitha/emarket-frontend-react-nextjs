@@ -18,8 +18,7 @@ const Catalog = async ({ searchParams }: Props) => {
   const { text } = await searchParams;
   const encoded = encodeURIComponent(text);
   const products = await apiFetch<productType[]>(
-    `/open/search?text=${encoded}&size=60`,
-    { mode: "revalidate" }
+    `/open/search?text=${encoded}&size=60`
   );
 
   return (

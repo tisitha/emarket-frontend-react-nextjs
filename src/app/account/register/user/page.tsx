@@ -20,8 +20,8 @@ const UserRegisterPage = async () => {
   });
 
   return (
-    <div className="h-screen flex flex-col">
-      <div className="flex flex-grow justify-center items-center  my-16">
+    <div className="flex h-dvh flex-col">
+      <div className="flex justify-center items-center max-h-dvh h-full my-16">
         <div className="w-100">
           <RegisterForm provinces={provinces} vendor={false} />
         </div>
