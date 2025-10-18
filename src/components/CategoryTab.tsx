@@ -8,7 +8,10 @@ type categoryType = {
 };
 
 const CategoryTab = async () => {
-  const categories = await apiFetch<categoryType[]>(`/open/category/root`);
+  const categories = await apiFetch<categoryType[]>(`/open/category/root`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
   return (
     <div className="max-w-[1366px]">

@@ -118,13 +118,24 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
   const categories =
     category &&
     category != "null" &&
-    (await apiFetch<categoryType[]>(`/open/category/sub/${category}`));
+    (await apiFetch<categoryType[]>(`/open/category/sub/${category}`, {
+      mode: "revalidate",
+    }));
 
-  const rootCategories = await apiFetch<categoryType[]>(`/open/category/root`);
+  const rootCategories = await apiFetch<categoryType[]>(`/open/category/root`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
-  const provinces = await apiFetch<provinceType[]>(`/open/province`);
+  const provinces = await apiFetch<provinceType[]>(`/open/province`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
-  const warranties = await apiFetch<warrantyType[]>(`/open/warranty`);
+  const warranties = await apiFetch<warrantyType[]>(`/open/warranty`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
   const products = await apiFetch<productResponseType>(
     `${
@@ -135,6 +146,7 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
     {
       method: "POST",
       body: getProductDto,
+      mode: "revalidate",
     }
   );
 

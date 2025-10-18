@@ -36,7 +36,9 @@ const Product = async ({ searchParams }: Props) => {
     rdir = "asc",
   } = await searchParams;
 
-  const product = await apiFetch<productType>(`/open/product/${id}`);
+  const product = await apiFetch<productType>(`/open/product/${id}`, {
+    mode: "revalidate",
+  });
 
   if (product == null) {
     notFound();

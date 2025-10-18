@@ -17,7 +17,10 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const carousels = await apiFetch<carouseType[]>(`/open/carousel`);
+  const carousels = await apiFetch<carouseType[]>(`/open/carousel`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
   return (
     <>
