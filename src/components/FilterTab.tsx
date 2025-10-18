@@ -34,30 +34,30 @@ const FilterTab = ({
   const [province, setProvince] = useState<number[]>([]);
   const [warranty, setWarranty] = useState<number[]>([]);
 
-  const handleMinPriceChange = (event: any) => {
+  const handleMinPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value == "") {
       setMinPrice(null);
     } else {
-      if (event.target.value < 0) {
+      if (Number(event.target.value) < 0) {
         setMinPrice(0);
-      } else if (event.target.value > 9999999) {
+      } else if (Number(event.target.value) > 9999999) {
         setMinPrice(9999999);
       } else {
-        setMinPrice(event.target.value);
+        setMinPrice(Number(event.target.value));
       }
     }
   };
 
-  const handleMaxPriceChange = (event: any) => {
+  const handleMaxPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value == "") {
       setMaxPrice(null);
     } else {
-      if (event.target.value < 0) {
+      if (Number(event.target.value) < 0) {
         setMaxPrice(0);
-      } else if (event.target.value > 9999999) {
+      } else if (Number(event.target.value) > 9999999) {
         setMaxPrice(9999999);
       } else {
-        setMaxPrice(event.target.value);
+        setMaxPrice(Number(event.target.value));
       }
     }
   };

@@ -23,7 +23,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 
-const page = () => {
+const VerifyOtp = () => {
   const [isPending, startTransitionn] = useTransition();
   const [otp, setOtp] = useState<number>();
   const [recoveryEmail, setRecoveryEmail] = useState<string>("");
@@ -112,4 +112,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default VerifyOtp;

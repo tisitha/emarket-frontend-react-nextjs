@@ -12,7 +12,7 @@ import { Spinner } from "./ui/spinner";
 
 type Props = {
   title: string;
-  placeholder?: any;
+  placeholder?: string | number;
   defaultVal?: string;
   baseUrl: string;
   isSelect?: boolean;

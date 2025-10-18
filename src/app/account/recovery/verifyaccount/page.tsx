@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import React, { useState, useTransition } from "react";
 import { toast } from "sonner";
 
-const page = () => {
+const VerifyAccount = () => {
   const [isPending, startTransitionn] = useTransition();
   const [email, setEmail] = useState("");
 
@@ -90,4 +90,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default VerifyAccount;

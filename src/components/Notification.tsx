@@ -146,7 +146,7 @@ const Notification = ({ userToken }: { userToken?: string }) => {
                   <MailOpen size={70} />
                   <div>No notifications</div>
                   <div className="font-normal">
-                    Looks like you haven't received any notifications yet.
+                    Looks like you haven&apos;t received any notifications yet.
                   </div>
                 </div>
               )}
@@ -219,7 +219,8 @@ const Notification = ({ userToken }: { userToken?: string }) => {
                     <MailOpen size={70} />
                     <div>No notifications</div>
                     <div className="font-normal text-gray-800 text-center">
-                      Looks like you haven't received any notifications yet.
+                      Looks like you haven&apos;t received any notifications
+                      yet.
                     </div>
                   </div>
                 )}

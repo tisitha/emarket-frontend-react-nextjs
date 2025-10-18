@@ -10,6 +10,7 @@ export async function apiFetch<T>(
     revalidateSeconds = 60,
   }: {
     method?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body?: any;
     headers?: HeadersInit;
     mode?: FetchMode;
@@ -22,7 +23,8 @@ export async function apiFetch<T>(
 
     if (mode === "no-store") cacheOption = { cache: "no-store" };
     else if (mode === "cache") cacheOption = { cache: "force-cache" };
-    else if (mode === "revalidate") cacheOption = { next: { revalidate: revalidateSeconds } };
+    else if (mode === "revalidate")
+      cacheOption = { next: { revalidate: revalidateSeconds } };
 
     const res = await fetch(`${apiUrl}${endpoint}`, {
       method,

@@ -12,7 +12,7 @@ export const metadata = {
   description: "Settings page.",
 };
 
-const page = async () => {
+const Settings = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
   const role = cookieStore.get("user_role")?.value;
@@ -110,4 +110,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Settings;

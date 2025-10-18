@@ -16,7 +16,7 @@ export const metadata = {
   description: "User Dashboard.",
 };
 
-const page = async ({ searchParams }: Props) => {
+const Dashboard = async ({ searchParams }: Props) => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
   const role = cookieStore.get("user_role")?.value;
@@ -166,4 +166,4 @@ const page = async ({ searchParams }: Props) => {
   );
 };
 
-export default page;
+export default Dashboard;

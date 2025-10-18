@@ -63,7 +63,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
     <form onSubmit={handleSubmit}>
       <CardHeader>
         <CardTitle>Create a new account</CardTitle>
-        <CardDescription>It's quick and easy</CardDescription>
+        <CardDescription>It&apos;s quick and easy</CardDescription>
       </CardHeader>
       <CardContent className="mt-7">
         <div className="flex flex-col gap-6">

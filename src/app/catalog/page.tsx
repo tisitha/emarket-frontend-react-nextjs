@@ -14,7 +14,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string }>;
 };
 
-const page = async ({ searchParams }: Props) => {
+const Catalog = async ({ searchParams }: Props) => {
   const { text } = await searchParams;
   const encoded = encodeURIComponent(text);
   const products = await apiFetch<productType[]>(
@@ -26,7 +26,7 @@ const page = async ({ searchParams }: Props) => {
       <Header />
       <div className="max-w-[1366px] pb-[70px] bg-gray-100">
         <div className="bg-none font-bold text-2xl p-[77px] pb-[30px]">
-          Best matches for "{text}"
+          Best matches for &quot;{text}&quot;
         </div>
         <div className="flex flex-wrap px-[77px] justify-center gap-[28px]">
           {products?.length != 0 ? (
@@ -35,7 +35,8 @@ const page = async ({ searchParams }: Props) => {
             <div className="flex flex-col gap-4 py-14 text-gray-600 items-center">
               <div className="text-2xl">Search No Result</div>
               <div>
-                We're sorry. We cannot find any matches for your search term.
+                We&apos;re sorry. We cannot find any matches for your search
+                term.
               </div>
               <SearchIcon size={80} />
             </div>
@@ -47,4 +48,4 @@ const page = async ({ searchParams }: Props) => {
   );
 };
 
-export default page;
+export default Catalog;

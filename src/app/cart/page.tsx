@@ -15,7 +15,7 @@ export const metadata = {
   description: "User cart.",
 };
 
-const page = async () => {
+const Cart = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
 
@@ -181,4 +181,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Cart;

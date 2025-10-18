@@ -22,7 +22,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-const page = async ({ searchParams }: Props) => {
+const Product = async ({ searchParams }: Props) => {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
 
@@ -327,4 +327,4 @@ const page = async ({ searchParams }: Props) => {
   );
 };
 
-export default page;
+export default Product;
