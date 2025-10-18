@@ -14,7 +14,10 @@ type provinceType = {
 };
 
 const UserRegisterPage = async () => {
-  const provinces = await apiFetch<provinceType[]>(`/open/province`);
+  const provinces = await apiFetch<provinceType[]>(`/open/province`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
   return (
     <div className="h-screen flex flex-col">

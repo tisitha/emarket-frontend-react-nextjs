@@ -4,7 +4,10 @@ import { apiFetch } from "@/lib/apiClient.server";
 import React from "react";
 
 const VendorRegisterPage = async () => {
-  const provinces = await apiFetch<provinceType[]>(`/open/province`);
+  const provinces = await apiFetch<provinceType[]>(`/open/province`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
   return (
     <div className="h-screen flex flex-col">

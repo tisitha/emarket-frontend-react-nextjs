@@ -66,14 +66,23 @@ const VendorProducts = async ({
     {
       method: "POST",
       body: getProductDto,
+      mode: "revalidate",
     }
   );
 
-  const categories = await apiFetch<categoryType[]>(`/open/category`);
+  const categories = await apiFetch<categoryType[]>(`/open/category`, {
+    mode: "revalidate",
+  });
 
-  const provinces = await apiFetch<provinceType[]>(`/open/province`);
+  const provinces = await apiFetch<provinceType[]>(`/open/province`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
-  const warranties = await apiFetch<warrantyType[]>(`/open/warranty`);
+  const warranties = await apiFetch<warrantyType[]>(`/open/warranty`, {
+    mode: "revalidate",
+    revalidateSeconds: 18000,
+  });
 
   return (
     <div className="flex flex-col items-center max-w-[1360px] w-full">

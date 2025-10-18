@@ -79,11 +79,13 @@ const Product = async ({ searchParams }: Props) => {
   const reviews = await apiFetch<reviewResponseType>(`/open/review`, {
     method: "POST",
     body: reviewsGetRequest,
+    mode: "revalidate",
   });
 
   const questions = await apiFetch<questionResponseType>(`/open/question`, {
     method: "POST",
     body: questionsGetRequest,
+    mode: "revalidate",
   });
 
   const reviewSortOptions: sortOptionType[] = [
