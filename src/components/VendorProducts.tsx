@@ -90,13 +90,13 @@ const VendorProducts = async ({
         <div className="max-w-[900px] w-full">
           <div className="flex justify-between mb-7">
             <div className="flex gap-3">
-              <RefreshButton />
               <AddProduct
                 categories={categories}
                 provinces={provinces}
                 warranties={warranties}
                 token={token}
               />
+              <RefreshButton />
             </div>
             <div>
               <SortByButton options={options} id={"sortBy"} />
