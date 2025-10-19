@@ -90,6 +90,7 @@ const AddProduct = ({
 
       if (res) {
         toast("Saved!");
+        e.currentTarget.reset();
         router.refresh();
       } else {
         toast.error("Sorry, something went wrong! Please try again.");
