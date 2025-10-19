@@ -63,6 +63,7 @@ const ChangePassword = ({ token }: Props) => {
               type="password"
               name="password"
               minLength={8}
+              maxLength={255}
               required
             />
           </div>
@@ -75,6 +76,7 @@ const ChangePassword = ({ token }: Props) => {
               type="password"
               name="passwordRepeat"
               minLength={8}
+              maxLength={255}
               required
             />
           </div>
@@ -87,6 +89,7 @@ const ChangePassword = ({ token }: Props) => {
               type="password"
               name="currentPassword"
               minLength={8}
+              maxLength={255}
               required
             />
           </div>

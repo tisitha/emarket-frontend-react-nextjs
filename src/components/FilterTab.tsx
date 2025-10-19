@@ -127,6 +127,7 @@ const FilterTab = ({
           type="number"
           min="0"
           max="9999999"
+          maxLength={255}
           className="w-25 h-8 focus:bg-white"
         />
         -
@@ -138,6 +139,7 @@ const FilterTab = ({
           type="number"
           min="0"
           max="9999999"
+          maxLength={255}
           className="w-25 h-8 focus:bg-white"
         />
       </div>

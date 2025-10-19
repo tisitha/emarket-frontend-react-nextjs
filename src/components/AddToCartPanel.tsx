@@ -79,6 +79,7 @@ const AddToCartPanel = ({ productId, stockQuantity, token }: Props) => {
           name="quantity"
           type="number"
           value={quantity}
+          min={0}
           className="w-12 text-center"
         />
         <Button onClick={handleAddBtn}>+</Button>

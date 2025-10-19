@@ -125,6 +125,7 @@ const AddProduct = ({
                     type="text"
                     name="name"
                     defaultValue={product?.name}
+                    maxLength={200}
                     required
                   />
                 </div>
@@ -134,6 +135,7 @@ const AddProduct = ({
                     id="brand"
                     type="text"
                     name="brand"
+                    maxLength={50}
                     defaultValue={product?.brand}
                   />
                 </div>
@@ -244,6 +246,7 @@ const AddProduct = ({
                     className="outline rounded-sm px-2"
                     id="description"
                     name="description"
+                    maxLength={5000}
                     defaultValue={product?.description}
                   />
                 </div>

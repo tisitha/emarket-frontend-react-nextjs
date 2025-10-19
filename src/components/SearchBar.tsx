@@ -62,6 +62,7 @@ const CommandSearchBar = () => {
           onFocus={checkFocus}
           onBlur={checkBlur}
           onKeyDown={handleKeyDown}
+          maxLength={255}
           placeholder="What are you looking for..."
         />
         <Link

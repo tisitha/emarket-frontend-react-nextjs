@@ -62,6 +62,7 @@ const VerifyAccount = () => {
                 autoComplete="email"
                 placeholder="m@example.com"
                 onChange={handleChange}
+                maxLength={255}
               />
             </div>
           </CardContent>

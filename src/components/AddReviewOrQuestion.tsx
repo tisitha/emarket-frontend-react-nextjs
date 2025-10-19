@@ -75,6 +75,7 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
         id="body"
         name="body"
         className="bg-white max-w-200 w-full h-30 outline rounded-2xl p-2"
+        maxLength={review ? 1000 : 255}
         required
       />
       {review && (

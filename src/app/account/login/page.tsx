@@ -64,6 +64,7 @@ export default function LoginForm() {
                     name="email"
                     autoComplete="email"
                     placeholder="m@example.com"
+                    maxLength={255}
                     required
                   />
                 </div>
@@ -75,6 +76,7 @@ export default function LoginForm() {
                     id="password"
                     type="password"
                     name="password"
+                    maxLength={255}
                     required
                   />
                   <Link

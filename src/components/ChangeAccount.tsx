@@ -107,6 +107,7 @@ const ChangeAccount = ({ token, email, version }: Props) => {
                 id="businessName"
                 type="text"
                 name="businessName"
+                maxLength={255}
                 required
               />
             </div>
@@ -119,6 +120,7 @@ const ChangeAccount = ({ token, email, version }: Props) => {
                 id="bankAccountNo"
                 type="text"
                 name="bankAccountNo"
+                maxLength={255}
                 required
               />
             </div>
@@ -126,7 +128,13 @@ const ChangeAccount = ({ token, email, version }: Props) => {
               <div className="flex items-center">
                 <Label htmlFor="bank">Name of Bank</Label>
               </div>
-              <Input id="bank" type="text" name="bank" required />
+              <Input
+                id="bank"
+                type="text"
+                name="bank"
+                maxLength={255}
+                required
+              />
             </div>
           </>
         )}
@@ -139,6 +147,7 @@ const ChangeAccount = ({ token, email, version }: Props) => {
               id="password"
               type="password"
               name="password"
+              maxLength={255}
               minLength={8}
               required
             />

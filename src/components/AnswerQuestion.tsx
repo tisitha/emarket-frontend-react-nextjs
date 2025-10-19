@@ -72,6 +72,7 @@ const AnswerQuestion = ({ questionId, question, token }: Props) => {
           id="body"
           name="body"
           className="bg-white max-w-200 w-full h-30 outline rounded-2xl p-2"
+          maxLength={255}
           onChange={handleChange}
         />
         <Button disabled={isPending} onClick={handleClick} aria-label="Answer">

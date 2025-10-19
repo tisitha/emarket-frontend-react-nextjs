@@ -76,6 +76,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               name="fname"
               autoComplete="given-name"
               placeholder="John"
+              maxLength={255}
               required
             />
           </div>
@@ -87,6 +88,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               name="lname"
               autoComplete="family-name"
               placeholder="Doe"
+              maxLength={255}
               required
             />
           </div>
@@ -98,6 +100,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               name="email"
               autoComplete="email"
               placeholder="m@example.com"
+              maxLength={255}
               required
             />
           </div>
@@ -111,6 +114,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               name="password"
               placeholder="********"
               required
+              maxLength={255}
               minLength={8}
             />
           </div>
@@ -124,6 +128,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               name="passwordRepeat"
               placeholder="********"
               required
+              maxLength={255}
               minLength={8}
             />
           </div>
@@ -135,6 +140,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               name="phoneNo"
               autoComplete="tel"
               placeholder="+000000000"
+              maxLength={255}
               required
             />
           </div>
@@ -146,6 +152,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
               autoComplete="address-level3"
               name="address"
               placeholder="0/0, streat, city"
+              maxLength={255}
               required
             />
           </div>
@@ -172,6 +179,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
                   type="text"
                   name="businessName"
                   placeholder="Business Name"
+                  maxLength={255}
                   required
                 />
               </div>
@@ -182,6 +190,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
                   type="text"
                   name="bankAccountNo"
                   placeholder="123456789"
+                  maxLength={255}
                   required
                 />
               </div>
@@ -192,6 +201,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
                   type="text"
                   name="bank"
                   placeholder="Name of Bank"
+                  maxLength={255}
                   required
                 />
               </div>

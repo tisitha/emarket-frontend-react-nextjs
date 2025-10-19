@@ -79,6 +79,7 @@ const NewPass = () => {
                     type="password"
                     name="password"
                     minLength={8}
+                    maxLength={255}
                     required
                   />
                 </div>
@@ -91,6 +92,7 @@ const NewPass = () => {
                     type="password"
                     name="repeatPassword"
                     minLength={8}
+                    maxLength={255}
                     required
                   />
                 </div>

@@ -107,6 +107,7 @@ const DataEditBtn = ({
                 name={name}
                 value={currentValue}
                 onChange={handleChange}
+                maxLength={255}
                 required
               />
             </>
