@@ -14,7 +14,7 @@ type Props = {
 };
 
 const AddToCartPanel = ({ productId, stockQuantity, token }: Props) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number>(1);
 
   const [isPending, startTransaction] = useTransition();
 

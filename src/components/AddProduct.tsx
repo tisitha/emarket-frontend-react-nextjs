@@ -58,14 +58,15 @@ const AddProduct = ({
 
       const newJsonObject = {
         ...jsonObject,
-        price: Number(jsonObject.price),
-        deal: Number(jsonObject.deal),
+        price: jsonObject.price == "" ? null : Number(jsonObject.price),
+        deal: jsonObject.deal == "" ? null : Number(jsonObject.deal),
         cod: jsonObject.cod == "true" ? true : false,
         freeDelivery: jsonObject.freeDelivery == "true" ? true : false,
         categoryId: Number(jsonObject.categoryId),
         provinceId: Number(jsonObject.provinceId),
         warrantyId: Number(jsonObject.warrantyId),
-        quantity: Number(jsonObject.quantity),
+        quantity:
+          jsonObject.quantity == "" ? null : Number(jsonObject.quantity),
       };
 
       const url = product ? `/product/${product.id}` : "/product";
