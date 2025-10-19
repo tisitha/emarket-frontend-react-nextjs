@@ -66,7 +66,6 @@ const VendorProducts = async ({
     {
       method: "POST",
       body: getProductDto,
-      mode: "revalidate",
     }
   );
 
