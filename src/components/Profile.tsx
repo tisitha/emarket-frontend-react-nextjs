@@ -13,7 +13,11 @@ const Profile = async ({ token, isVendor }: Props) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  const provinces = (await apiFetch<provinceType[]>(`/open/province`)) || [];
+  const provinces =
+    (await apiFetch<provinceType[]>(`/open/province`, {
+      mode: "revalidate",
+      revalidateSeconds: 18000,
+    })) || [];
 
   return (
     <div className="max-w-[400px] w-full mx-auto bg-white py-7">
