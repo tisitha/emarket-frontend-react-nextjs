@@ -141,8 +141,8 @@ const VendorProducts = async ({
                   <TableCell>{p.category.name}</TableCell>
                   <TableCell>{p.warranty.name}</TableCell>
                   <TableCell>{p.province.name}</TableCell>
-                  <TableCell>{p.cod}</TableCell>
-                  <TableCell>{p.freeDelivery}</TableCell>
+                  <TableCell>{p.cod ? "Yes" : "No"}</TableCell>
+                  <TableCell>{p.freeDelivery ? "Yes" : "No"}</TableCell>
                   <TableCell>{p.price}</TableCell>
                   <TableCell>{p.deal}</TableCell>
                   <TableCell>{p.quantity}</TableCell>
