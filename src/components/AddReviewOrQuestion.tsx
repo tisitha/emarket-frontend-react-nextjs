@@ -40,7 +40,7 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
         });
         if (res) {
           toast.success("Added successfully");
-          e.currentTarget.reset();
+          (e.target as HTMLFormElement).reset();
           router.refresh();
         } else {
           toast.error("Something went wrong");
@@ -61,7 +61,7 @@ const AddReviewOrQuestion = ({ review, token, productId }: Props) => {
         });
         if (res) {
           toast.success("Your question was sent to vendor");
-          e.currentTarget.reset();
+          (e.target as HTMLFormElement).reset();
         } else {
           toast.error("Something went wrong");
         }

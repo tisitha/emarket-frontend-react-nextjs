@@ -90,7 +90,9 @@ const AddProduct = ({
 
       if (res) {
         toast("Saved!");
-        e.currentTarget.reset();
+        if (!product) {
+          (e.target as HTMLFormElement).reset();
+        }
         router.refresh();
       } else {
         toast.error("Sorry, something went wrong! Please try again.");
@@ -263,7 +265,7 @@ const AddProduct = ({
                 className="w-full hover:cursor-pointer"
                 aria-label="Save"
               >
-                {isPending ? <Spinner /> : <>Save</>}
+                {isPending ? <Spinner /> : product ? "Save" : "Add"}
               </Button>
               <DialogClose asChild>
                 <Button

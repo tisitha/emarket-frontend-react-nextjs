@@ -53,7 +53,7 @@ const NewPass = () => {
       if (res) {
         toast("Password changed successfully!");
         localStorage.clear();
-        e.currentTarget.reset();
+        (e.target as HTMLFormElement).reset();
         router.push("/account/login");
       }
     });
