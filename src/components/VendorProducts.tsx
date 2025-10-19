@@ -113,8 +113,8 @@ const VendorProducts = async ({
                 <TableHead>Province</TableHead>
                 <TableHead>Cod</TableHead>
                 <TableHead>Delivery free</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Deal</TableHead>
+                <TableHead>Price(Rs.)</TableHead>
+                <TableHead>Deal(Rs.)</TableHead>
                 <TableHead>Quantity</TableHead>
                 <TableHead></TableHead>
                 <TableHead></TableHead>
@@ -141,12 +141,16 @@ const VendorProducts = async ({
                   <TableCell>{p.category.name}</TableCell>
                   <TableCell>{p.warranty.name}</TableCell>
                   <TableCell>{p.province.name}</TableCell>
-                  <TableCell>{p.cod ? "Yes" : "No"}</TableCell>
-                  <TableCell>{p.freeDelivery ? "Yes" : "No"}</TableCell>
-                  <TableCell>{p.price}</TableCell>
-                  <TableCell>{p.deal}</TableCell>
-                  <TableCell>{p.quantity}</TableCell>
-                  <TableCell>
+                  <TableCell className="text-center">
+                    {p.cod ? "Yes" : "No"}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {p.freeDelivery ? "Yes" : "No"}
+                  </TableCell>
+                  <TableCell className="text-end">{p.price}</TableCell>
+                  <TableCell className="text-end">{p.deal}</TableCell>
+                  <TableCell className="text-center">{p.quantity}</TableCell>
+                  <TableCell className="text-center" aria-label="edit">
                     <AddProduct
                       token={token}
                       product={p}
@@ -155,7 +159,7 @@ const VendorProducts = async ({
                       warranties={warranties}
                     />
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-center" aria-label="delete">
                     <DeleteItem url={`/product/${p.id}`} token={token} />
                   </TableCell>
                 </TableRow>
