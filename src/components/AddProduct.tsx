@@ -105,12 +105,15 @@ const AddProduct = ({
       <DialogTrigger asChild>
         <Button>{product ? "Edit" : "Add Product"}</Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="md:max-w-[1000px] md:w-full">
         <DialogHeader>
           <DialogTitle></DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          className="md:max-w-[512px] md:w-full mx-auto"
+        >
           <CardHeader>
             <CardTitle></CardTitle>
             <CardDescription></CardDescription>

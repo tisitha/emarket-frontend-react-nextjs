@@ -88,8 +88,8 @@ const VendorProducts = async ({
     <div className="flex flex-col items-center max-w-[1360px] w-full">
       <div className="flex max-w-[1360px] w-full not-md:flex-wrap">
         <div className="max-w-[900px] w-full">
-          <div className="flex justify-between mb-7">
-            <div className="flex gap-3">
+          <div className="flex justify-between mb-7 gap-3">
+            <div className="flex gap-3 flex-wrap">
               <AddProduct
                 categories={categories}
                 provinces={provinces}
