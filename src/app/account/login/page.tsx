@@ -35,6 +35,7 @@ export default function LoginForm() {
 
       if (res.status == 200) {
         toast.success("Logging successfull");
+        e.currentTarget.reset();
         window.location.href = "/";
       } else {
         toast.error("Email or password incorrect");

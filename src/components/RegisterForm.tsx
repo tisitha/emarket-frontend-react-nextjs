@@ -52,6 +52,7 @@ const RegisterForm = ({ provinces = [], vendor }: Props) => {
 
       if (res) {
         toast.success("Account registered successfully");
+        e.currentTarget.reset();
         router.push("/account/login");
       } else {
         toast.error("Sorry, something went wrong! please try again!");
