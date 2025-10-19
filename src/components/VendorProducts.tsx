@@ -13,6 +13,7 @@ import AddProduct from "./AddProduct";
 import SortByButton from "./SortByButton";
 import Image from "next/image";
 import DeleteItem from "./DeleteItem";
+import RefreshButton from "./RefreshButton";
 
 type Props = {
   pagenumber: number;
@@ -88,12 +89,15 @@ const VendorProducts = async ({
       <div className="flex max-w-[1360px] w-full not-md:flex-wrap">
         <div className="max-w-[900px] w-full">
           <div className="flex justify-between mb-7">
-            <AddProduct
-              categories={categories}
-              provinces={provinces}
-              warranties={warranties}
-              token={token}
-            />
+            <div className="flex gap-3">
+              <RefreshButton />
+              <AddProduct
+                categories={categories}
+                provinces={provinces}
+                warranties={warranties}
+                token={token}
+              />
+            </div>
             <div>
               <SortByButton options={options} id={"sortBy"} />
             </div>
