@@ -183,12 +183,12 @@ const ProductsByFilters = async ({ searchParams }: Props) => {
                     }
                   </div>
                 ) : (
-                  <div className="mx-auto max-w-[240px] w-full">
-                    <div className="text-gray-800">Category</div>
+                  <div className="mx-auto max-w-[240px] w-full flex flex-col">
+                    <div className="text-gray-800 font-medium">Category</div>
                     {categories &&
                       categories.map((c, i) => (
                         <Link
-                          className="text-gray-700 hover:text-shadow-blue-600 hover:text-black"
+                          className="text-gray-700 hover:text-blue-600 active:text-blue-600"
                           key={i}
                           href={`/products?category=${c.id}`}
                         >
