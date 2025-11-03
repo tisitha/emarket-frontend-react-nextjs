@@ -204,7 +204,16 @@ const Product = async ({ searchParams }: Props) => {
                 )}
               </div>
               <div className="outline" />
-              <div>Sold by: {product.vendorProfile.businessName}</div>
+              <div>
+                Sold by:{" "}
+                <Link
+                  href={`/products?vendor=${product.vendorProfile.id}`}
+                  aria-label="Vendor"
+                  className="hover:text-blue-900"
+                >
+                  {product.vendorProfile.businessName}
+                </Link>
+              </div>
               <div>From: {product.province.name}</div>
             </div>
           </div>
